@@ -45,5 +45,7 @@ data class PropertyResponse(
     val importantInfo: String?,
     val tags: List<TagResponse>,
     val amenities: List<AmenityResponse>,
-    val paymentMethods: List<PaymentMethodResponse>
+    val paymentMethods: List<PaymentMethodResponse>,
+    val images: List<String>,
+    val currentPrice: String?
 )

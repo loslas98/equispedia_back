@@ -39,7 +39,9 @@ class PropertyService(
             importantInfo = prop.importantInfo,
             tags = prop.tags.map(tagService::toResponse),
             amenities = prop.amenities.map(amenityService::toAmenityResponse),
-            paymentMethods = prop.paymentMethods.map(paymentMethodService::toResponse)
+            paymentMethods = prop.paymentMethods.map(paymentMethodService::toResponse),
+            images = prop.images.map { it.url },
+            currentPrice = prop.roomTypes.minByOrNull { it.basePricePerNight }?.basePricePerNight?.toPlainString()
         )
     }
 
