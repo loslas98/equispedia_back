@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface ImageRepository : JpaRepository<Image, Int>
+interface ImageRepository : JpaRepository<Image, Int> {
+    fun findByPropertyId(propertyId: Int): List<Image>
+}

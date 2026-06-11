@@ -13,6 +13,8 @@ import java.time.LocalDate
 
 @Repository
 interface RoomTypeRepository : JpaRepository<RoomType, Int> {
+    fun findByPropertyId(propertyId: Int): List<RoomType>
+} {
 
     @Query("""
         SELECT COUNT(rt) > 0 FROM RoomType rt
