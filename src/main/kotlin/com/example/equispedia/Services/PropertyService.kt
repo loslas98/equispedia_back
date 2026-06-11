@@ -183,7 +183,7 @@ class PropertyService(
                     latitude = property.latitude,
                     longitude = property.longitude,
                     lowestPricePerNight = lowestPrice,
-                    thumbnailUrl = null,  // pendiente: ver punto 6
+                    thumbnailUrl = property.images.firstOrNull()?.url,
                     petsAllowed = property.petsAllowed,
                     childrenAllowed = property.childrenAllowed,
                     contactlessCheckIn = property.contactlessCheckIn,
