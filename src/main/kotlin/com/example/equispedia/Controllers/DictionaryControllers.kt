@@ -13,6 +13,10 @@ class RegionController(private val service: RegionService) {
 
     @GetMapping
     fun getAll() = ResponseEntity.ok(service.getAllRegions())
+
+    @GetMapping("/search")
+    fun search(@RequestParam q: String) = ResponseEntity.ok(service.searchRegions(q))
+    
 }
 
 @RestController

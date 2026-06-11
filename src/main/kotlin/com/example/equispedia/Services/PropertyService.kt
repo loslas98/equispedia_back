@@ -97,6 +97,10 @@ class PropertyService(
                     property.id, req.adults, req.children, req.checkIn, req.checkOut
                 ) ?: return@mapNotNull null
 
+                val hasFreeCancellation = roomTypeRepository.hasRefundableAvailability(
+                    property.id, req.adults, req.children, req.checkIn, req.checkOut
+                )
+
                 HotelSearchResult(
                     id = property.id,
                     name = property.name,
@@ -106,11 +110,21 @@ class PropertyService(
                         property.region.type,
                         property.region.parentRegion?.id
                     ),
+                    propertyType = PropertyTypeResponse(
+                        property.propertyType.id,
+                        property.propertyType.name
+                    ),
+                    tags = property.tags.map(tagService::toResponse),
+                    amenities = property.amenities.map(amenityService::toAmenityResponse),
                     starRating = property.starRating,
                     latitude = property.latitude,
                     longitude = property.longitude,
                     lowestPricePerNight = lowestPrice,
-                    thumbnailUrl = null  // pendiente: ver punto 6
+                    thumbnailUrl = null,  // pendiente: ver punto 6
+                    petsAllowed = property.petsAllowed,
+                    childrenAllowed = property.childrenAllowed,
+                    contactlessCheckIn = property.contactlessCheckIn,
+                    hasFreeCancellation = hasFreeCancellation
                 )
             }
     }

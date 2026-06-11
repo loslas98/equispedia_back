@@ -65,6 +65,33 @@ interface RoomTypeRepository : JpaRepository<RoomType, Int> {
         @Param("checkIn") checkIn: LocalDate,
         @Param("checkOut") checkOut: LocalDate
     ): BigDecimal?
+
+    @Query("""
+        SELECT COUNT(rt) > 0 FROM RoomType rt
+        WHERE rt.property.id = :propertyId
+        AND rt.isRefundable = true
+        AND rt.maxOccupancyAdults >= :adults
+        AND rt.maxOccupancyChildren >= :children
+        AND NOT EXISTS (
+            SELECT ri FROM RoomInventory ri
+            WHERE ri.roomType = rt
+            AND ri.date >= :checkIn AND ri.date < :checkOut
+            AND ri.roomsAvailable <= (
+                SELECT COUNT(bi) FROM BookingItem bi
+                JOIN bi.booking b
+                WHERE bi.roomType = rt
+                AND b.status != 'CANCELLED'
+                AND b.checkIn <= ri.date AND b.checkOut > ri.date
+            )
+        )
+    """)
+    fun hasRefundableAvailability(
+        @Param("propertyId") propertyId: Int,
+        @Param("adults") adults: Int,
+        @Param("children") children: Int,
+        @Param("checkIn") checkIn: LocalDate,
+        @Param("checkOut") checkOut: LocalDate
+    ): Boolean
 }
 
 @Repository

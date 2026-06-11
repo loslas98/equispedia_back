@@ -25,4 +25,6 @@ class AmenityService(
         val amenity = Amenity(category = cat, name = req.name, iconName = req.iconName)
         return toAmenityResponse(amenityRepository.save(amenity))
     }
+
+    fun getAllAmenities() = amenityRepository.findAll().map(::toAmenityResponse)
 }
