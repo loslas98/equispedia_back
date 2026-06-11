@@ -8,7 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface RoomTypeRepository : JpaRepository<RoomType, Int>
+interface RoomTypeRepository : JpaRepository<RoomType, Int> {
+    fun findByPropertyId(propertyId: Int): List<RoomType>
+}
 
 @Repository
 interface BedTypeRepository : JpaRepository<BedType, Int>

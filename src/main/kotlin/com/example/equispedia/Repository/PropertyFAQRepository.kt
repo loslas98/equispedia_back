@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface PropertyFAQRepository : JpaRepository<PropertyFAQ, Int>
+interface PropertyFAQRepository : JpaRepository<PropertyFAQ, Int> {
+    fun findByPropertyId(propertyId: Int): List<PropertyFAQ>
+}
