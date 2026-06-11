@@ -67,4 +67,10 @@ data class Property(
         inverseJoinColumns = [JoinColumn(name = "payment_method_id")]
     )
     val paymentMethods: MutableSet<PaymentMethod> = mutableSetOf()
+
+    @OneToMany(mappedBy = "property", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    val images: MutableSet<Image> = mutableSetOf()
+
+    @OneToMany(mappedBy = "property", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    val roomTypes: MutableSet<RoomType> = mutableSetOf()
 }
