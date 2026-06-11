@@ -16,7 +16,8 @@ class PropertyService(
     private val paymentMethodRepository: PaymentMethodRepository,
     private val tagService: TagService,
     private val amenityService: AmenityService,
-    private val paymentMethodService: PaymentMethodService
+    private val paymentMethodService: PaymentMethodService,
+    private val roomTypeRepository: RoomTypeRepository
 ) {
     fun toResponse(prop: Property): PropertyResponse {
         return PropertyResponse(
@@ -79,4 +80,38 @@ class PropertyService(
 
     fun getProperty(id: Int) = propertyRepository.findById(id).map(::toResponse).orElse(null)
     fun getAllProperties() = propertyRepository.findAll().map(::toResponse)
+
+    fun searchHotels(req: HotelSearchRequest): List<HotelSearchResult> {
+            val candidates = propertyRepository.findCandidatesByRegionAndCapacity(
+                req.regionId, req.adults, req.children
+            )
+
+            return candidates.mapNotNull { property ->
+                val available = roomTypeRepository.hasAvailability(
+                    property.id, req.adults, req.children, req.checkIn, req.checkOut
+                )
+
+                if (!available) return@mapNotNull null
+
+                val lowestPrice = roomTypeRepository.findLowestAvailablePrice(
+                    property.id, req.adults, req.children, req.checkIn, req.checkOut
+                ) ?: return@mapNotNull null
+
+                HotelSearchResult(
+                    id = property.id,
+                    name = property.name,
+                    region = RegionResponse(
+                        property.region.id,
+                        property.region.name,
+                        property.region.type,
+                        property.region.parentRegion?.id
+                    ),
+                    starRating = property.starRating,
+                    latitude = property.latitude,
+                    longitude = property.longitude,
+                    lowestPricePerNight = lowestPrice,
+                    thumbnailUrl = null  // pendiente: ver punto 6
+                )
+            }
+    }
 }
