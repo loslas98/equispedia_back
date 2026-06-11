@@ -45,7 +45,9 @@ data class PropertyResponse(
     val importantInfo: String?,
     val tags: List<TagResponse>,
     val amenities: List<AmenityResponse>,
-    val paymentMethods: List<PaymentMethodResponse>
+    val paymentMethods: List<PaymentMethodResponse>,
+    val images: List<String>,
+    val currentPrice: String?
 )
 
 @com.fasterxml.jackson.annotation.JsonInclude(com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL)
