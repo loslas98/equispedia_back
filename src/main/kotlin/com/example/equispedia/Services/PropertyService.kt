@@ -143,6 +143,55 @@ class PropertyService(
     }
     fun getAllProperties() = propertyRepository.findAll().map(::toResponse)
 
+    @Transactional(readOnly = true)
+    fun searchHotels(req: HotelSearchRequest): List<HotelSearchResult> {
+            val candidates = propertyRepository.findCandidatesByRegionAndCapacity(
+                req.regionId, req.adults, req.children
+            )
+
+            return candidates.mapNotNull { property ->
+                val available = roomTypeRepository.hasAvailability(
+                    property.id, req.adults, req.children, req.checkIn, req.checkOut
+                )
+
+                if (!available) return@mapNotNull null
+
+                val lowestPrice = roomTypeRepository.findLowestAvailablePrice(
+                    property.id, req.adults, req.children, req.checkIn, req.checkOut
+                ) ?: return@mapNotNull null
+
+                val hasFreeCancellation = roomTypeRepository.hasRefundableAvailability(
+                    property.id, req.adults, req.children, req.checkIn, req.checkOut
+                )
+
+                HotelSearchResult(
+                    id = property.id,
+                    name = property.name,
+                    region = RegionResponse(
+                        property.region.id,
+                        property.region.name,
+                        property.region.type,
+                        property.region.parentRegion?.id
+                    ),
+                    propertyType = PropertyTypeResponse(
+                        property.propertyType.id,
+                        property.propertyType.name
+                    ),
+                    tags = property.tags.map(tagService::toResponse),
+                    amenities = property.amenities.map(amenityService::toAmenityResponse),
+                    starRating = property.starRating,
+                    latitude = property.latitude,
+                    longitude = property.longitude,
+                    lowestPricePerNight = lowestPrice,
+                    thumbnailUrl = null,  // pendiente: ver punto 6
+                    petsAllowed = property.petsAllowed,
+                    childrenAllowed = property.childrenAllowed,
+                    contactlessCheckIn = property.contactlessCheckIn,
+                    hasFreeCancellation = hasFreeCancellation
+                )
+            }
+    }
+
     fun checkAvailability(
         propertyId: Int,
         checkIn: java.time.LocalDate,

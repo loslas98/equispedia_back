@@ -27,4 +27,9 @@ class RegionService(
     }
 
     fun getAllRegions() = regionRepository.findAll().map(::toResponse)
+
+    fun searchRegions(query: String): List<RegionResponse> {
+        if (query.isBlank()) return emptyList()
+        return regionRepository.searchByName(query).map(::toResponse)
+    }
 }
