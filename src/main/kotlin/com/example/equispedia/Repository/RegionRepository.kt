@@ -15,4 +15,6 @@ interface RegionRepository : JpaRepository<Region, Int>{
         ORDER BY r.type, r.name
     """)
     fun searchByName(@Param("query") query: String): List<Region>
+
+    fun findByParentRegion_IdIn(parentIds: Collection<Int>): List<Region>
 }
