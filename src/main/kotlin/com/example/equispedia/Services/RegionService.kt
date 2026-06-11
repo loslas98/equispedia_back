@@ -30,6 +30,25 @@ class RegionService(
 
     fun searchRegions(query: String): List<RegionResponse> {
         if (query.isBlank()) return emptyList()
-        return regionRepository.searchByName(query).map(::toResponse)
+
+        val nameMatches = regionRepository.searchByName(query)
+        val nameMatchIds = nameMatches.map { it.id }.toSet()
+        val children = if (nameMatchIds.isEmpty()) {
+            emptyList()
+        } else {
+            regionRepository.findByParentRegion_IdIn(nameMatchIds)
+        }
+
+        return (nameMatches + children)
+            .distinctBy { it.id }
+            .filter { it.parentRegion != null }
+            .sortedWith(
+                compareBy(
+                    { it.id !in nameMatchIds },
+                    { it.type.ordinal },
+                    { it.name.lowercase() },
+                ),
+            )
+            .map(::toResponse)
     }
 }
