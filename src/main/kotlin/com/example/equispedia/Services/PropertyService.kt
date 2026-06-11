@@ -18,7 +18,6 @@ class PropertyService(
     private val amenityService: AmenityService,
     private val paymentMethodService: PaymentMethodService,
     private val roomTypeRepository: RoomTypeRepository,
-    private val roomTypeRepository: RoomTypeRepository,
     private val roomTypeService: RoomTypeService,
     private val propertyFAQRepository: PropertyFAQRepository,
     private val propertyFAQService: PropertyFAQService,
@@ -142,6 +141,7 @@ class PropertyService(
     }
     fun getAllProperties() = propertyRepository.findAll().map(::toResponse)
 
+    @Transactional(readOnly = true)
     fun searchHotels(req: HotelSearchRequest): List<HotelSearchResult> {
             val candidates = propertyRepository.findCandidatesByRegionAndCapacity(
                 req.regionId, req.adults, req.children
