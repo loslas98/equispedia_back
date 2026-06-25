@@ -39,8 +39,7 @@ class ReviewController(private val service: ReviewService) {
 @RestController
 @RequestMapping("/api/amenities")
 class AmenityController(private val service: AmenityService) {
-    @GetMapping
-    fun getAll() = ResponseEntity.ok(service.getAllAmenities())
+
 
     @PostMapping("/categories")
     fun createCategory(@RequestBody req: AmenityCategoryRequest) = ResponseEntity.ok(service.createCategory(req))
@@ -55,6 +54,5 @@ class PropertyTypeController(private val service: PropertyTypeService) {
     @PostMapping
     fun create(@RequestBody req: PropertyTypeRequest) = ResponseEntity.ok(service.createType(req))
 
-    @GetMapping
-    fun getAll() = ResponseEntity.ok(service.getAllTypes())
+
 }

@@ -11,11 +11,7 @@ class RegionController(private val service: RegionService) {
     @PostMapping
     fun create(@RequestBody req: RegionRequest) = ResponseEntity.ok(service.createRegion(req))
 
-    @GetMapping
-    fun getAll() = ResponseEntity.ok(service.getAllRegions())
 
-    @GetMapping("/search")
-    fun search(@RequestParam q: String) = ResponseEntity.ok(service.searchRegions(q))
     
 }
 
@@ -25,8 +21,7 @@ class TagController(private val service: TagService) {
     @PostMapping
     fun create(@RequestBody req: TagRequest) = ResponseEntity.ok(service.createTag(req))
 
-    @GetMapping
-    fun getAll() = ResponseEntity.ok(service.getAllTags())
+
 }
 
 @RestController

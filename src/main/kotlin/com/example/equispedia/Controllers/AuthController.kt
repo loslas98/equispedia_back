@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = ["*"]) // Allow React frontend
+// Global CORS config handles it
 class AuthController(
     private val authService: AuthService
 ) {
@@ -38,7 +38,7 @@ class AuthController(
     fun me(): ResponseEntity<Any> {
         // Since this endpoint is protected by our JwtAuthenticationFilter,
         // we are guaranteed to have the email in the security context.
-        val email = SecurityContextHolder.getContext().authentication.principal as String
+        val email = SecurityContextHolder.getContext().authentication?.principal as String
         
         return try {
             ResponseEntity.ok(authService.getMe(email))

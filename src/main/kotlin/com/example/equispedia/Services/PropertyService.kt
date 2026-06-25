@@ -14,92 +14,9 @@ class PropertyService(
     private val tagRepository: TagRepository,
     private val amenityRepository: AmenityRepository,
     private val paymentMethodRepository: PaymentMethodRepository,
-    private val tagService: TagService,
-    private val amenityService: AmenityService,
-    private val paymentMethodService: PaymentMethodService,
     private val roomTypeRepository: RoomTypeRepository,
-    private val roomTypeService: RoomTypeService,
-    private val propertyFAQRepository: PropertyFAQRepository,
-    private val propertyFAQService: PropertyFAQService,
-    private val reviewRepository: ReviewRepository,
-    private val reviewService: ReviewService,
-    private val imageRepository: ImageRepository,
-    private val imageService: ImageService,
     private val roomInventoryRepository: RoomInventoryRepository
 ) {
-    fun toDetailResponse(prop: Property, include: String?): PropertyDetailResponse {
-        val includes = include?.split(",")?.map { it.trim().lowercase() } ?: emptyList()
-
-        val rooms = if (includes.contains("rooms")) {
-            roomTypeRepository.findByPropertyId(prop.id).map(roomTypeService::toResponse)
-        } else null
-
-        val faqs = if (includes.contains("faqs")) {
-            propertyFAQRepository.findByPropertyId(prop.id).map(propertyFAQService::toResponse)
-        } else null
-
-        val reviews = if (includes.contains("reviews")) {
-            reviewRepository.findByPropertyId(prop.id).map(reviewService::toResponse)
-        } else null
-
-        val images = if (includes.contains("images")) {
-            imageRepository.findByPropertyId(prop.id).map(imageService::toResponse)
-        } else null
-
-        return PropertyDetailResponse(
-            id = prop.id,
-            name = prop.name,
-            propertyType = PropertyTypeResponse(prop.propertyType.id, prop.propertyType.name),
-            region = RegionResponse(prop.region.id, prop.region.name, prop.region.type, prop.region.parentRegion?.id),
-            address = prop.address,
-            latitude = prop.latitude,
-            longitude = prop.longitude,
-            starRating = prop.starRating,
-            description = prop.description,
-            checkInStartTime = prop.checkInStartTime,
-            checkInEndTime = prop.checkInEndTime,
-            checkOutTime = prop.checkOutTime,
-            minAgeCheckIn = prop.minAgeCheckIn,
-            contactlessCheckIn = prop.contactlessCheckIn,
-            petsAllowed = prop.petsAllowed,
-            childrenAllowed = prop.childrenAllowed,
-            importantInfo = prop.importantInfo,
-            tags = prop.tags.map(tagService::toResponse),
-            amenities = prop.amenities.map(amenityService::toAmenityResponse),
-            paymentMethods = prop.paymentMethods.map(paymentMethodService::toResponse),
-            rooms = rooms,
-            faqs = faqs,
-            reviews = reviews,
-            images = images
-        )
-    }
-
-    fun toResponse(prop: Property): PropertyResponse {
-        return PropertyResponse(
-            id = prop.id,
-            name = prop.name,
-            propertyType = PropertyTypeResponse(prop.propertyType.id, prop.propertyType.name),
-            region = RegionResponse(prop.region.id, prop.region.name, prop.region.type, prop.region.parentRegion?.id),
-            address = prop.address,
-            latitude = prop.latitude,
-            longitude = prop.longitude,
-            starRating = prop.starRating,
-            description = prop.description,
-            checkInStartTime = prop.checkInStartTime,
-            checkInEndTime = prop.checkInEndTime,
-            checkOutTime = prop.checkOutTime,
-            minAgeCheckIn = prop.minAgeCheckIn,
-            contactlessCheckIn = prop.contactlessCheckIn,
-            petsAllowed = prop.petsAllowed,
-            childrenAllowed = prop.childrenAllowed,
-            importantInfo = prop.importantInfo,
-            tags = prop.tags.map(tagService::toResponse),
-            amenities = prop.amenities.map(amenityService::toAmenityResponse),
-            paymentMethods = prop.paymentMethods.map(paymentMethodService::toResponse),
-            images = prop.images.map { it.url },
-            currentPrice = prop.roomTypes.minByOrNull { it.basePricePerNight }?.basePricePerNight?.toPlainString()
-        )
-    }
 
     @Transactional
     fun createProperty(req: PropertyRequest): PropertyResponse {
@@ -132,16 +49,21 @@ class PropertyService(
         prop.amenities.addAll(amenities)
         prop.paymentMethods.addAll(pms)
 
-        return toResponse(propertyRepository.save(prop))
+        return propertyRepository.save(prop).toResponse()
     }
 
-    fun getProperty(id: Int) = propertyRepository.findById(id).map(::toResponse).orElse(null)
+    @Transactional(readOnly = true)
+    fun getProperty(id: Int) = propertyRepository.findById(id).map { it.toResponse() }.orElse(null)
+    
+    @Transactional(readOnly = true)
     fun getPropertyWithIncludes(id: Int, include: String?): PropertyDetailResponse? {
         val propOpt = propertyRepository.findById(id)
         if (propOpt.isEmpty) return null
-        return toDetailResponse(propOpt.get(), include)
+        return propOpt.get().toDetailResponse(include)
     }
-    fun getAllProperties() = propertyRepository.findAll().map(::toResponse)
+    
+    @Transactional(readOnly = true)
+    fun getAllProperties() = propertyRepository.findAll().map { it.toResponse() }
 
     @Transactional(readOnly = true)
     fun searchHotels(req: HotelSearchRequest): List<HotelSearchResult> {
@@ -167,18 +89,10 @@ class PropertyService(
                 HotelSearchResult(
                     id = property.id,
                     name = property.name,
-                    region = RegionResponse(
-                        property.region.id,
-                        property.region.name,
-                        property.region.type,
-                        property.region.parentRegion?.id
-                    ),
-                    propertyType = PropertyTypeResponse(
-                        property.propertyType.id,
-                        property.propertyType.name
-                    ),
-                    tags = property.tags.map(tagService::toResponse),
-                    amenities = property.amenities.map(amenityService::toAmenityResponse),
+                    region = property.region.toResponse(),
+                    propertyType = property.propertyType.toResponse(),
+                    tags = property.tags.map { it.toResponse() },
+                    amenities = property.amenities.map { it.toResponse() },
                     starRating = property.starRating,
                     latitude = property.latitude,
                     longitude = property.longitude,

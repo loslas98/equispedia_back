@@ -1,5 +1,6 @@
 package com.example.equispedia.Models
 
+import com.example.equispedia.DTO.PropertyDetailResponse
 import jakarta.persistence.*
 import java.math.BigDecimal
 import java.time.LocalTime
@@ -73,4 +74,10 @@ data class Property(
 
     @OneToMany(mappedBy = "property", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     val roomTypes: MutableSet<RoomType> = mutableSetOf()
+
+    @OneToMany(mappedBy = "property", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    val faqs: MutableSet<PropertyFAQ> = mutableSetOf()
+
+    @OneToMany(mappedBy = "property", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    val reviews: MutableSet<Review> = mutableSetOf()
 }

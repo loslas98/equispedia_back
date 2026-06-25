@@ -32873,3 +32873,6 @@ INSERT INTO "images" ("id", "alt_text", "is_main", "url", "property_id", "room_t
 (289, 'Dummy Image', false, 'https://images.trvl-media.com/lodging/13000000/12850000/12846900/12846843/2d027b2e.jpg', 80, NULL),
 (290, 'Dummy Image', false, 'https://images.trvl-media.com/lodging/13000000/12850000/12846900/12846843/cd857b12.jpg', 80, NULL);
 SELECT setval('images_id_seq', (SELECT MAX(id) FROM images));
+SELECT setval('users_id_seq', (SELECT MAX(id) FROM users));
+
+

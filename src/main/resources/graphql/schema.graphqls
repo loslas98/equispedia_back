@@ -1,0 +1,177 @@
+type Query {
+    # Property Queries
+    searchHotels(regionId: Int!, checkIn: String!, checkOut: String!, adults: Int!, children: Int): [HotelSearchResult]
+    getProperty(id: ID!, include: String): PropertyDetailResponse
+    getAllProperties: [PropertyResponse]
+    checkAvailability(id: ID!, checkIn: String!, checkOut: String!, guests: Int!): PropertyAvailabilityResponse
+
+    # Dictionary & Misc Queries
+    searchRegions(query: String!): [RegionResponse]
+    getAllTags: [TagResponse]
+    getAllTypes: [PropertyTypeResponse]
+    getAllAmenities: [AmenityResponse]
+}
+
+# --- Types ---
+
+type RegionResponse {
+    id: ID!
+    name: String!
+    type: String!
+    parentRegionId: Int
+}
+
+type TagResponse {
+    id: ID!
+    name: String!
+}
+
+type PropertyTypeResponse {
+    id: ID!
+    name: String!
+}
+
+type AmenityCategoryResponse {
+    id: ID!
+    name: String!
+}
+
+type AmenityResponse {
+    id: ID!
+    category: AmenityCategoryResponse!
+    name: String!
+    iconName: String
+}
+
+type PaymentMethodResponse {
+    id: ID!
+    name: String!
+}
+
+type HotelSearchResult {
+    id: ID!
+    name: String!
+    region: RegionResponse!
+    propertyType: PropertyTypeResponse!
+    tags: [TagResponse]!
+    amenities: [AmenityResponse]!
+    starRating: Int
+    latitude: Float!
+    longitude: Float!
+    lowestPricePerNight: Float!
+    thumbnailUrl: String
+    petsAllowed: Boolean!
+    childrenAllowed: Boolean!
+    contactlessCheckIn: Boolean!
+    hasFreeCancellation: Boolean!
+}
+
+type PropertyResponse {
+    id: ID!
+    name: String!
+    propertyType: PropertyTypeResponse!
+    region: RegionResponse!
+    address: String!
+    latitude: Float!
+    longitude: Float!
+    starRating: Int
+    description: String
+    checkInStartTime: String
+    checkInEndTime: String
+    checkOutTime: String
+    minAgeCheckIn: Int
+    contactlessCheckIn: Boolean!
+    petsAllowed: Boolean!
+    childrenAllowed: Boolean!
+    importantInfo: String
+    tags: [TagResponse]!
+    amenities: [AmenityResponse]!
+    paymentMethods: [PaymentMethodResponse]!
+    images: [String]!
+    currentPrice: String
+}
+
+type RoomTypeResponse {
+    id: ID!
+    propertyId: Int!
+    name: String!
+    basePricePerNight: Float!
+    maxOccupancyAdults: Int!
+    maxOccupancyChildren: Int!
+    sqMeters: Int
+    isRefundable: Boolean!
+    freeCancellationDays: Int
+    cancellationPolicyDetails: String
+}
+
+type PropertyFAQResponse {
+    id: ID!
+    question: String!
+    answer: String!
+}
+
+type ReviewResponse {
+    id: ID!
+    propertyId: Int!
+    userId: Int!
+    ratingOverall: Int!
+    ratingCleanliness: Int!
+    ratingService: Int!
+    ratingFacilities: Int!
+    comment: String
+    travelerType: String!
+    isVerified: Boolean!
+    createdAt: String!
+}
+
+type ImageResponse {
+    id: ID!
+    propertyId: Int!
+    roomTypeId: Int
+    url: String!
+    altText: String
+    isMain: Boolean!
+}
+
+type PropertyDetailResponse {
+    id: ID!
+    name: String!
+    propertyType: PropertyTypeResponse!
+    region: RegionResponse!
+    address: String!
+    latitude: Float!
+    longitude: Float!
+    starRating: Int
+    description: String
+    checkInStartTime: String
+    checkInEndTime: String
+    checkOutTime: String
+    minAgeCheckIn: Int
+    contactlessCheckIn: Boolean!
+    petsAllowed: Boolean!
+    childrenAllowed: Boolean!
+    importantInfo: String
+    tags: [TagResponse]!
+    amenities: [AmenityResponse]!
+    paymentMethods: [PaymentMethodResponse]!
+    rooms: [RoomTypeResponse]
+    faqs: [PropertyFAQResponse]
+    reviews: [ReviewResponse]
+    images: [ImageResponse]
+}
+
+type RoomAvailabilityResponse {
+    roomTypeId: ID!
+    name: String!
+    isAvailable: Boolean!
+    totalPrice: Float!
+    pricePerNightAverage: Float!
+}
+
+type PropertyAvailabilityResponse {
+    propertyId: ID!
+    isAvailable: Boolean!
+    checkIn: String!
+    checkOut: String!
+    rooms: [RoomAvailabilityResponse]!
+}

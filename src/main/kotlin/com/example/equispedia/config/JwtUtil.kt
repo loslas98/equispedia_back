@@ -13,7 +13,7 @@ import javax.crypto.SecretKey
 @Component
 class JwtUtil {
 
-    @Value("\${JWT_SECRET}")
+    @Value("\${JWT_SECRET:super_secret_key_equispedia_1234567890_backend}")
     private lateinit var jwtSecretStr: String
 
     private val secretKey: SecretKey by lazy {

@@ -2,98 +2,67 @@ package com.example.equispedia.Controllers
 
 import com.example.equispedia.DTO.*
 import com.example.equispedia.Services.PropertyService
-import io.swagger.v3.oas.annotations.Operation
-import io.swagger.v3.oas.annotations.Parameter
-import io.swagger.v3.oas.annotations.responses.ApiResponse
-import io.swagger.v3.oas.annotations.responses.ApiResponses
-import org.springframework.format.annotation.DateTimeFormat
-import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.*
+import org.springframework.graphql.data.method.annotation.Argument
+import org.springframework.graphql.data.method.annotation.QueryMapping
+import org.springframework.stereotype.Controller
 import java.time.LocalDate
 
-@RestController
-@RequestMapping("/api/properties")
+@Controller
 class PropertyController(private val propertyService: PropertyService) {
 
-    @PostMapping
-    fun createProperty(@RequestBody request: PropertyRequest): ResponseEntity<PropertyResponse> {
-        return ResponseEntity.ok(propertyService.createProperty(request))
+    @org.springframework.web.bind.annotation.PostMapping("/api/properties")
+    @org.springframework.web.bind.annotation.ResponseBody
+    fun createProperty(@org.springframework.web.bind.annotation.RequestBody request: PropertyRequest): org.springframework.http.ResponseEntity<PropertyResponse> {
+        return org.springframework.http.ResponseEntity.ok(propertyService.createProperty(request))
     }
 
-    @GetMapping("/search")
+    @QueryMapping
     fun searchHotels(
-        @RequestParam regionId: Int,
-        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) checkIn: LocalDate,
-        @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) checkOut: LocalDate,
-        @RequestParam adults: Int,
-        @RequestParam(defaultValue = "0") children: Int
-    ): ResponseEntity<List<HotelSearchResult>> {
+        @Argument regionId: Int,
+        @Argument checkIn: String,
+        @Argument checkOut: String,
+        @Argument adults: Int,
+        @Argument children: Int?
+    ): List<HotelSearchResult> {
         val request = HotelSearchRequest(
             regionId = regionId,
-            checkIn = checkIn,
-            checkOut = checkOut,
+            checkIn = LocalDate.parse(checkIn),
+            checkOut = LocalDate.parse(checkOut),
             adults = adults,
-            children = children
+            children = children ?: 0
         )
-        return ResponseEntity.ok(propertyService.searchHotels(request))
+        return propertyService.searchHotels(request)
     }
 
-    @Operation(
-        summary = "Obtener una propiedad por su ID",
-        description = "Retorna los detalles de la propiedad. Permite precargar relaciones dinámicamente mediante el parámetro 'include'."
-    )
-    @ApiResponses(value = [
-        ApiResponse(responseCode = "200", description = "Propiedad obtenida exitosamente"),
-        ApiResponse(responseCode = "404", description = "Propiedad no encontrada")
-    ])
-    @GetMapping("/{id}")
+    @QueryMapping
     fun getProperty(
-        @Parameter(description = "ID único de la propiedad", required = true, example = "1")
-        @PathVariable id: Int,
-
-        @Parameter(
-            description = "Relaciones separadas por comas a precargar en la respuesta. Opciones válidas: rooms, faqs, reviews, images",
-            required = false,
-            example = "rooms,faqs"
-        )
-        @RequestParam(required = false) include: String?
-    ): ResponseEntity<Any> {
+        @Argument id: Int,
+        @Argument include: String?
+    ): Any? {
         return if (include != null) {
-            val prop = propertyService.getPropertyWithIncludes(id, include)
-            if (prop != null) ResponseEntity.ok(prop) else ResponseEntity.notFound().build()
+            propertyService.getPropertyWithIncludes(id, include)
         } else {
-            val prop = propertyService.getProperty(id)
-            if (prop != null) ResponseEntity.ok(prop) else ResponseEntity.notFound().build()
+            propertyService.getProperty(id)
         }
     }
 
-    @GetMapping
-    fun getAllProperties(): ResponseEntity<List<PropertyResponse>> {
-        return ResponseEntity.ok(propertyService.getAllProperties())
+    @QueryMapping
+    fun getAllProperties(): List<PropertyResponse> {
+        return propertyService.getAllProperties()
     }
 
-    @Operation(
-        summary = "Verificar disponibilidad de habitaciones de una propiedad",
-        description = "Retorna el estado de disponibilidad y el desglose de precios por habitación para un rango de fechas y cantidad de huéspedes."
-    )
-    @ApiResponses(value = [
-        ApiResponse(responseCode = "200", description = "Consulta realizada correctamente")
-    ])
-    @GetMapping("/{id}/availability")
+    @QueryMapping
     fun checkAvailability(
-        @Parameter(description = "ID único de la propiedad", required = true, example = "1")
-        @PathVariable id: Int,
-
-        @Parameter(description = "Fecha de inicio (Check-in)", required = true, example = "2026-07-03")
-        @RequestParam @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) checkIn: LocalDate,
-
-        @Parameter(description = "Fecha de fin (Check-out)", required = true, example = "2026-07-06")
-        @RequestParam @org.springframework.format.annotation.DateTimeFormat(iso = org.springframework.format.annotation.DateTimeFormat.ISO.DATE) checkOut: LocalDate,
-
-        @Parameter(description = "Cantidad de huéspedes", required = true, example = "2")
-        @RequestParam guests: Int
-    ): ResponseEntity<PropertyAvailabilityResponse> {
-        val response = propertyService.checkAvailability(id, checkIn, checkOut, guests)
-        return ResponseEntity.ok(response)
+        @Argument id: Int,
+        @Argument checkIn: String,
+        @Argument checkOut: String,
+        @Argument guests: Int
+    ): PropertyAvailabilityResponse {
+        return propertyService.checkAvailability(
+            id,
+            LocalDate.parse(checkIn),
+            LocalDate.parse(checkOut),
+            guests
+        )
     }
 }
