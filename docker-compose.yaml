@@ -2,14 +2,202 @@ services:
   db:
     image: postgres:15
     container_name: equispedia_db
+    restart: always
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
+      - TZ=${TIMEZONE:-America/Santiago}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./postgres-init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -h localhost -U ${DB_USER} -d ${DB_NAME}']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - equispedia_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: equispedia_redis
+    restart: always
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - equispedia_network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:${N8N_VERSION:-latest}
+    container_name: equispedia_n8n
+    restart: always
+    ports:
+      - "${N8N_PORT:-5678}:5678"
+    environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_DATABASE=n8n_db
+      - DB_POSTGRESDB_HOST=db
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_USER=${DB_USER}
+      - DB_POSTGRESDB_PASSWORD=${DB_PASSWORD}
+      - N8N_HOST=${N8N_HOST}
+      - N8N_PORT=${N8N_PORT:-5678}
+      - N8N_PROTOCOL=${N8N_PROTOCOL:-https}
+      - NODE_ENV=production
+      - WEBHOOK_URL=${N8N_WEBHOOK_URL}
+      - GENERIC_TIMEZONE=${TIMEZONE:-America/Santiago}
+      - TZ=${TIMEZONE:-America/Santiago}
+      - N8N_TRUST_PROXY=true
+      - EXECUTIONS_MODE=queue
+      - QUEUE_BULL_REDIS_HOST=redis
+      - QUEUE_BULL_REDIS_PORT=6379
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - n8n_data:/home/node/.n8n
+    networks:
+      - equispedia_network
+
+  n8n-worker:
+    image: docker.n8n.io/n8nio/n8n:${N8N_VERSION:-latest}
+    container_name: equispedia_n8n_worker
+    restart: always
+    command: worker
+    environment:
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_DATABASE=n8n_db
+      - DB_POSTGRESDB_HOST=db
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_USER=${DB_USER}
+      - DB_POSTGRESDB_PASSWORD=${DB_PASSWORD}
+      - EXECUTIONS_MODE=queue
+      - QUEUE_BULL_REDIS_HOST=redis
+      - QUEUE_BULL_REDIS_PORT=6379
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+      - NODE_ENV=production
+      - TZ=${TIMEZONE:-America/Santiago}
+    depends_on:
+      n8n:
+        condition: service_started
+    volumes:
+      - n8n_data:/home/node/.n8n
+    networks:
+      - equispedia_network
+
+  evolution-api:
+    image: evoapicloud/evolution-api:${EVOLUTION_API_VERSION:-v2.1.2}
+    container_name: equispedia_evolution_api
+    restart: always
+    ports:
+      - "${EVOLUTION_API_PORT:-8080}:8080"
+    environment:
+      - SERVER_URL=${EVOLUTION_API_URL}
+      - DEL_INSTANCE=false
+      - DATABASE_PROVIDER=postgresql
+      - DATABASE_CONNECTION_URI=postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/evolution_db?schema=public
+      - DATABASE_CONNECTION_CLIENT_NAME=evolution_api
+      - REDIS_URI=redis://redis:6379/1
+      - RABBITMQ_ENABLED=false
+      - WEBSOCKET_ENABLED=true
+      - AUTHENTICATION_API_KEY=${EVOLUTION_GLOBAL_API_KEY}
+      - AUTHENTICATION_EXPOSE_IN_FETCH_INSTANCES=true
+      - CONFIG_SESSION_PHONE_VERSION=${CONFIG_SESSION_PHONE_VERSION}
+      - CACHE_REDIS_ENABLED=${CACHE_REDIS_ENABLED:-false}
+      - CACHE_LOCAL_ENABLED=${CACHE_LOCAL_ENABLED:-true}
+      - DATABASE_SAVE_DATA_CHATS=${DATABASE_SAVE_DATA_CHATS:-false}
+      - DATABASE_SAVE_DATA_CONTACTS=${DATABASE_SAVE_DATA_CONTACTS:-false}
+      - DATABASE_SAVE_DATA_HISTORIC=${DATABASE_SAVE_DATA_HISTORIC:-false}
+      - DATABASE_SAVE_DATA_LABELS=${DATABASE_SAVE_DATA_LABELS:-false}
+      - CHATWOOT_ENABLED=true
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - evolution_instances:/evolution/instances
+      - evolution_store:/evolution/store
+    networks:
+      - equispedia_network
+
+  chatwoot-web:
+    image: chatwoot/chatwoot:${CHATWOOT_VERSION:-v3.11.0}
+    container_name: equispedia_chatwoot
+    restart: always
+    command: sh -c "rm -f tmp/pids/server.pid && bundle exec rails db:chatwoot_prepare && bundle exec rails s -p 3000 -b 0.0.0.0"
+    ports:
+      - "${CHATWOOT_PORT:-3000}:3000"
+    environment:
+      - FRONTEND_URL=${CHATWOOT_FRONTEND_URL}
+      - NODE_ENV=production
+      - RAILS_ENV=production
+      - INSTALLATION_ENV=docker
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DATABASE=chatwoot_db
+      - POSTGRES_USERNAME=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY_BASE=${CHATWOOT_SECRET_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - equispedia_network
+
+  chatwoot-worker:
+    image: chatwoot/chatwoot:${CHATWOOT_VERSION:-v3.11.0}
+    container_name: equispedia_chatwoot_worker
+    restart: always
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    environment:
+      - NODE_ENV=production
+      - RAILS_ENV=production
+      - INSTALLATION_ENV=docker
+      - POSTGRES_HOST=db
+      - POSTGRES_DATABASE=chatwoot_db
+      - POSTGRES_USERNAME=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY_BASE=${CHATWOOT_SECRET_KEY}
+    depends_on:
+      chatwoot-web:
+        condition: service_started
+    networks:
+      - equispedia_network
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: equispedia_cloudflared
+    restart: always
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+    command: tunnel run
+    networks:
+      - equispedia_network
+
+networks:
+  equispedia_network:
+    driver: bridge
 
 volumes:
   postgres_data:
+  n8n_data:
+  redis_data:
+  evolution_instances:
+  evolution_store:

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Escanear QR WhatsApp - Equispedia</title>
+</head>
+<body style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; font-family:sans-serif; background-color:#0f172a; color:white;">
+    <h1 style="margin-bottom:10px;">📱 Vincula tu WhatsApp</h1>
+    <p style="color:#94a3b8; margin-bottom:10px;">Abre WhatsApp en tu teléfono &gt; Dispositivos vinculados &gt; Vincular dispositivo</p>
+    <p style="color:#38bdf8; font-size:13px; margin-bottom:20px;">⚡ El código QR se actualiza en tiempo real automáticamente.</p>
+    <div style="background:white; padding:16px; border-radius:16px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+        <img id="qrImg" src="" alt="Cargando nuevo QR..." style="width:300px; height:300px; display:block;" />
+    </div>
+    <p id="statusText" style="margin-top:20px; color:#94a3b8; font-size:14px;">Obteniendo código QR actual...</p>
+
+    <script>
+    async function fetchQR() {
+        try {
+            const res = await fetch('https://evo.koydev.online/instance/connect/equispedia', {
+                headers: { 'apikey': 'super_secret_evolution_global_key_123456' }
+            });
+            const data = await res.json();
+            if (data.base64) {
+                document.getElementById('qrImg').src = data.base64;
+                document.getElementById('statusText').innerText = 'Status: Código QR fresco listo para escanear';
+            } else if (data.instance && data.instance.state === 'open') {
+                document.getElementById('qrImg').style.display = 'none';
+                document.getElementById('statusText').innerText = '🎉 ¡WhatsApp conectado con éxito!';
+                document.getElementById('statusText').style.color = '#4ade80';
+                document.getElementById('statusText').style.fontSize = '20px';
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    }
+    fetchQR();
+    setInterval(fetchQR, 10000);
+    </script>
+</body>
+</html>

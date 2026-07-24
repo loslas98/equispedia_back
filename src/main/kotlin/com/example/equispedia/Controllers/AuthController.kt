@@ -4,6 +4,7 @@ import com.example.equispedia.DTO.AuthResponse
 import com.example.equispedia.DTO.LoginRequest
 import com.example.equispedia.DTO.RegisterRequest
 import com.example.equispedia.DTO.UserInfoResponse
+import com.example.equispedia.DTO.GoogleLoginRequest
 import com.example.equispedia.Services.AuthService
 import org.springframework.http.ResponseEntity
 import org.springframework.security.core.context.SecurityContextHolder
@@ -42,6 +43,15 @@ class AuthController(
         
         return try {
             ResponseEntity.ok(authService.getMe(email))
+        } catch (e: Exception) {
+            ResponseEntity.badRequest().body(mapOf("error" to e.message))
+        }
+    }
+
+    @PostMapping("/google")
+    fun googleLogin(@RequestBody request: GoogleLoginRequest): ResponseEntity<Any> {
+        return try {
+            ResponseEntity.ok(authService.loginWithGoogle(request))
         } catch (e: Exception) {
             ResponseEntity.badRequest().body(mapOf("error" to e.message))
         }

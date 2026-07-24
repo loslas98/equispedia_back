@@ -1,0 +1,4 @@
+CREATE DATABASE n8n_db;
+CREATE DATABASE chatwoot_db;
+CREATE DATABASE evolution_db;
+

@@ -21,3 +21,7 @@ data class UserInfoResponse(
     val fullName: String,
     val id: Int
 )
+
+data class GoogleLoginRequest(
+    val token: String
+)

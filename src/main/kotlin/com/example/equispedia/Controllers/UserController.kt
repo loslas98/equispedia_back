@@ -4,7 +4,10 @@ import com.example.equispedia.DTO.UserCreateRequest
 import com.example.equispedia.DTO.UserResponse
 import com.example.equispedia.Services.UserService
 import org.springframework.http.ResponseEntity
+import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.*
+import java.security.Principal
+import com.example.equispedia.DTO.PropertySummaryResponse
 
 @RestController
 @RequestMapping("/api/users")
@@ -25,5 +28,11 @@ class UserController(private val userService: UserService) {
     fun toggleFavorite(@PathVariable userId: Int, @PathVariable propertyId: Int): ResponseEntity<Map<String, Boolean>> {
         val isFavorite = userService.toggleFavorite(userId, propertyId)
         return ResponseEntity.ok(mapOf("isFavorite" to isFavorite))
+    }
+
+    @GetMapping("/me/favorites")
+    fun getMyFavorites(principal: Principal): ResponseEntity<List<PropertySummaryResponse>> {
+        val favorites = userService.getMyFavorites(principal.name)
+        return ResponseEntity.ok(favorites)
     }
 }
