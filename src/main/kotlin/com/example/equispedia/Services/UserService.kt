@@ -46,4 +46,20 @@ class UserService(
         userRepository.save(user)
         return !isFavorite
     }
+
+    @Transactional(readOnly = true)
+    fun getMyFavorites(email: String): List<PropertySummaryResponse> {
+        val user = userRepository.findByEmail(email) ?: throw RuntimeException("User not found")
+        return user.favoriteProperties.map {
+            PropertySummaryResponse(
+                id = it.id,
+                name = it.name,
+                propertyType = it.propertyType.name,
+                region = it.region.name,
+                starRating = it.starRating ?: 0,
+                basePricePerNight = it.roomTypes.minOfOrNull { rt -> rt.basePricePerNight }?.toDouble() ?: 0.0,
+                mainImageUrl = it.images.firstOrNull { img -> img.isMain }?.url
+            )
+        }
+    }
 }

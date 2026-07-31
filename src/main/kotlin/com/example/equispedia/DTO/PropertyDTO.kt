@@ -96,3 +96,14 @@ data class PropertyAvailabilityResponse(
     val rooms: List<RoomAvailabilityResponse>
 )
 
+data class PropertySummaryResponse(
+    val id: Int,
+    val name: String,
+    val propertyType: String,
+    val region: String,
+    val starRating: Int,
+    val basePricePerNight: Double,
+    val mainImageUrl: String?
+)
+
+
