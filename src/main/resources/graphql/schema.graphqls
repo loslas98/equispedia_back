@@ -10,7 +10,7 @@ type Query {
     getAllTags: [TagResponse]
     getAllTypes: [PropertyTypeResponse]
     getAllAmenities: [AmenityResponse]
-}
+} 
 
 # --- Types ---
 
