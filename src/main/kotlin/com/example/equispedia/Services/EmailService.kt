@@ -2,13 +2,16 @@ package com.example.equispedia.Services
 
 import com.example.equispedia.Models.Booking
 import jakarta.mail.internet.MimeMessage
+import org.springframework.mail.SimpleMailMessage
 import org.springframework.mail.javamail.JavaMailSender
 import org.springframework.mail.javamail.MimeMessageHelper
-import org.springframework.stereotype.Service
 import org.springframework.scheduling.annotation.Async
+import org.springframework.stereotype.Service
 
 @Service
-class EmailService(private val mailSender: JavaMailSender) {
+class EmailService(
+    private val mailSender: JavaMailSender
+) {
 
     @Async
     fun sendBookingConfirmation(
@@ -40,16 +43,16 @@ class EmailService(private val mailSender: JavaMailSender) {
                         <h1>Equispedia</h1>
                     </div>
                     <div class="content">
-                        <p>Hola <strong>${'$'}{name.uppercase()}</strong>,</p>
+                        <p>Hola <strong>${name.uppercase()}</strong>,</p>
                         <p>Tu reserva ha sido confirmada y procesada con éxito. En este correo encontrarás toda la información necesaria sobre tu estadía.</p>
                         
                         <div class="title-green">DETALLES DE LA RESERVA:</div>
                         <p>
-                            <strong>Propiedad:</strong> ${'$'}{booking.property.name}<br>
-                            <strong>ID de Reserva:</strong> #${'$'}{booking.id}<br>
-                            <strong>Check-in:</strong> ${'$'}{booking.checkIn}<br>
-                            <strong>Check-out:</strong> ${'$'}{booking.checkOut}<br>
-                            <strong>Monto Total Pagado:</strong> ${'$'}${'$'}{booking.totalPrice}
+                            <strong>Propiedad:</strong> ${booking.property.name}<br>
+                            <strong>ID de Reserva:</strong> #${booking.id}<br>
+                            <strong>Check-in:</strong> ${booking.checkIn}<br>
+                            <strong>Check-out:</strong> ${booking.checkOut}<br>
+                            <strong>Monto Total Pagado:</strong> $${booking.totalPrice}
                         </p>
 
                         <div class="title-green">INFORMACIÓN IMPORTANTE:</div>
@@ -78,10 +81,25 @@ class EmailService(private val mailSender: JavaMailSender) {
             helper.setText(body, true) // true indicates HTML
 
             mailSender.send(message)
-            println("Email sent successfully to ${'$'}toEmail")
+            println("Email sent successfully to $toEmail")
         } catch (e: Exception) {
-            System.err.println("Failed to send email to ${'$'}toEmail: ${'$'}{e.message}")
+            System.err.println("Failed to send email to $toEmail: ${e.message}")
             e.printStackTrace()
+        }
+    }
+
+    fun sendSimpleEmail(to: String, subject: String, body: String) {
+        try {
+            val message = SimpleMailMessage().apply {
+                setTo(to)
+                setSubject(subject)
+                setText(body)
+                setFrom("no-reply@equispedia.com")
+            }
+            mailSender.send(message)
+            println("Email sent successfully to $to")
+        } catch (e: Exception) {
+            System.err.println("Failed to send email to $to: ${e.message}")
         }
     }
 }
