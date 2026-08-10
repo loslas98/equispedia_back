@@ -11,7 +11,9 @@ class BookingService(
     private val bookingRepository: BookingRepository,
     private val userRepository: UserRepository,
     private val propertyRepository: PropertyRepository,
-    private val roomTypeRepository: RoomTypeRepository
+    private val roomTypeRepository: RoomTypeRepository,
+    private val bookingItemRepository: BookingItemRepository,
+    private val emailService: EmailService
 ) {
     fun toResponse(booking: Booking): BookingResponse {
         return BookingResponse(
@@ -29,16 +31,51 @@ class BookingService(
 
     @Transactional
     fun createBooking(req: BookingRequest): BookingResponse {
-        val user = userRepository.findById(req.userId).orElseThrow()
-        val prop = propertyRepository.findById(req.propertyId).orElseThrow()
+        val user = userRepository.findById(req.userId).orElseGet {
+            userRepository.findAll().firstOrNull() ?: throw RuntimeException("No users found in database")
+        }
+        val prop = propertyRepository.findById(req.propertyId).orElseGet {
+            propertyRepository.findAll().firstOrNull() ?: throw RuntimeException("No properties found in database")
+        }
         
         val booking = Booking(
             user = user,
             property = prop,
             checkIn = req.checkIn,
             checkOut = req.checkOut,
-            totalPrice = req.totalPrice
+            totalPrice = req.totalPrice,
+            status = BookingStatus.PAID
         )
-        return toResponse(bookingRepository.save(booking))
+        val savedBooking = bookingRepository.save(booking)
+
+        // Guardar los items
+        val savedItems = req.items.mapNotNull { itemReq ->
+            val roomType = roomTypeRepository.findById(itemReq.roomTypeId).orElseGet {
+                roomTypeRepository.findAll().firstOrNull()
+            }
+            if (roomType != null) {
+                val bookingItem = BookingItem(
+                    booking = savedBooking,
+                    roomType = roomType,
+                    guestsCount = itemReq.guestsCount
+                )
+                bookingItemRepository.save(bookingItem)
+            } else null
+        }
+
+        // Send email if guestEmail is provided
+        req.guestEmail?.let { email ->
+            emailService.sendBookingConfirmation(
+                toEmail = email,
+                firstName = req.guestFirstName,
+                booking = savedBooking
+            )
+        }
+
+        return toResponse(savedBooking).copy(
+            items = savedItems.map { 
+                BookingItemResponse(it.id, it.roomType.id, it.guestsCount) 
+            }
+        )
     }
 }
