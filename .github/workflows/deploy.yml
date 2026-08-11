@@ -23,11 +23,11 @@ jobs:
 
       - name: Build image
         run: |
-          docker build -t iad.ocir.io/${{ secrets.OCIR_USERNAME }}/equispedia-backend:latest .
+          docker build -t iad.ocir.io/${{ secrets.OCIR_NAMESPACE }}/equispedia-backend:latest .
 
       - name: Push image
         run: |
-          docker push iad.ocir.io/${{ secrets.OCIR_USERNAME }}/equispedia-backend:latest
+          docker push iad.ocir.io/${{ secrets.OCIR_NAMESPACE }}/equispedia-backend:latest
 
       - name: Deploy backend container
         uses: appleboy/ssh-action@v1
@@ -37,7 +37,7 @@ jobs:
           key: ${{ secrets.OCI_SSH_PRIVATE_KEY }}
           script: |
             echo "${{ secrets.OCIR_AUTH_TOKEN }}" | sudo docker login iad.ocir.io -u "${{ secrets.OCIR_USERNAME }}" --password-stdin
-            sudo docker pull iad.ocir.io/${{ secrets.OCIR_USERNAME }}/equispedia-backend:latest
+            sudo docker pull iad.ocir.io/${{ secrets.OCIR_NAMESPACE }}/equispedia-backend:latest
             sudo docker rm -f equispedia_backend || true
             sudo docker run -d \
               --name equispedia_backend \
@@ -50,7 +50,7 @@ jobs:
               -e DB_PASSWORD="${{ secrets.DB_PASSWORD }}" \
               -e JWT_SECRET="${{ secrets.JWT_SECRET }}" \
               -e STRIPE_SECRET_KEY="${{ secrets.STRIPE_SECRET_KEY }}" \
-              iad.ocir.io/${{ secrets.OCIR_USERNAME }}/equispedia-backend:latest
+              iad.ocir.io/${{ secrets.OCIR_NAMESPACE }}/equispedia-backend:latest
 
       - name: Deploy to OCI instance via SSH
         uses: appleboy/ssh-action@v1
@@ -60,7 +60,7 @@ jobs:
           key: ${{ secrets.OCI_SSH_PRIVATE_KEY }}
           script: |
             echo "${{ secrets.OCIR_AUTH_TOKEN }}" | sudo docker login iad.ocir.io -u "${{ secrets.OCIR_USERNAME }}" --password-stdin
-            sudo docker pull iad.ocir.io/${{ secrets.OCIR_USERNAME }}/equispedia-backend:latest
+            sudo docker pull iad.ocir.io/${{ secrets.OCIR_NAMESPACE }}/equispedia-backend:latest
             sudo docker rm -f equispedia_backend || true
             sudo docker run -d \
               --name equispedia_backend \
