@@ -65,10 +65,14 @@ class BookingService(
 
         // Send email if guestEmail is provided
         req.guestEmail?.let { email ->
+            val propertyImageUrl = prop.images.firstOrNull()?.url
+            
             emailService.sendBookingConfirmation(
                 toEmail = email,
                 firstName = req.guestFirstName,
-                booking = savedBooking
+                booking = savedBooking,
+                items = savedItems,
+                propertyImageUrl = propertyImageUrl
             )
         }
 
