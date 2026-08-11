@@ -1,0 +1,721 @@
+2026-08-11T14:26:50.204-04:00  INFO 2692 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Starting EquispediaApplicationKt using Java 26.0.1 with PID 2692 (C:\Users\arge_\Desktop\equispedia_back\target\classes started by arge_ in C:\Users\arge_\Desktop\equispedia_back)
+2026-08-11T14:26:50.206-04:00  INFO 2692 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2026-08-11T14:26:50.261-04:00  INFO 2692 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-11T14:26:50.262-04:00  INFO 2692 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-11T14:26:51.320-04:00  INFO 2692 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-11T14:26:51.468-04:00  INFO 2692 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 141 ms. Found 19 JPA repository interfaces.
+2026-08-11T14:26:51.931-04:00  INFO 2692 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-08-11T14:26:51.942-04:00  INFO 2692 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-11T14:26:51.943-04:00  INFO 2692 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-08-11T14:26:51.994-04:00  INFO 2692 --- [equispedia] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1732 ms
+2026-08-11T14:26:52.150-04:00  INFO 2692 --- [equispedia] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-11T14:26:52.190-04:00  INFO 2692 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-08-11T14:26:52.548-04:00  INFO 2692 --- [equispedia] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-11T14:26:52.570-04:00  INFO 2692 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-11T14:26:52.659-04:00  INFO 2692 --- [equispedia] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3412c0d9
+2026-08-11T14:26:52.661-04:00  INFO 2692 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-11T14:26:52.680-04:00  WARN 2692 --- [equispedia] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-11T14:26:52.696-04:00  INFO 2692 --- [equispedia] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/equispedia]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.18
+	Default catalog/schema: equispedia/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-11T14:26:53.509-04:00  INFO 2692 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-11T14:26:53.572-04:00  INFO 2692 --- [equispedia] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:26:53.633-04:00  INFO 2692 --- [equispedia] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-11T14:26:54.932-04:00  WARN 2692 --- [equispedia] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-11T14:26:54.981-04:00  WARN 2692 --- [equispedia] [restartedMain] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: d6cbf406-142e-4dce-8004-99d222b9d031
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-11T14:26:54.987-04:00  INFO 2692 --- [equispedia] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-11T14:26:55.336-04:00  INFO 2692 --- [equispedia] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-08-11T14:26:55.495-04:00  INFO 2692 --- [equispedia] [restartedMain] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: [PropertyDetailResponse]
+2026-08-11T14:26:55.515-04:00  INFO 2692 --- [equispedia] [restartedMain] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-08-11T14:26:55.566-04:00  INFO 2692 --- [equispedia] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-08-11T14:26:56.416-04:00  INFO 2692 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-08-11T14:26:56.420-04:00  INFO 2692 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Started EquispediaApplicationKt in 6.557 seconds (process running for 7.24)
+2026-08-11T14:26:58.512-04:00  INFO 2692 --- [equispedia] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-11T14:26:58.512-04:00  INFO 2692 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-11T14:26:58.513-04:00  INFO 2692 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-08-11T14:28:46.090-04:00  INFO 2692 --- [equispedia] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-11T14:28:46.095-04:00  INFO 2692 --- [equispedia] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-11T14:28:46.100-04:00  INFO 2692 --- [equispedia] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:28:46.102-04:00  INFO 2692 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-11T14:28:46.105-04:00  INFO 2692 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-11T14:28:53.689-04:00  INFO 38816 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Starting EquispediaApplicationKt using Java 26.0.1 with PID 38816 (C:\Users\arge_\Desktop\equispedia_back\target\classes started by arge_ in C:\Users\arge_\Desktop\equispedia_back)
+2026-08-11T14:28:53.692-04:00  INFO 38816 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2026-08-11T14:28:53.740-04:00  INFO 38816 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-11T14:28:53.740-04:00  INFO 38816 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-11T14:28:54.800-04:00  INFO 38816 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-11T14:28:54.951-04:00  INFO 38816 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 142 ms. Found 19 JPA repository interfaces.
+2026-08-11T14:28:55.375-04:00  INFO 38816 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-08-11T14:28:55.386-04:00  INFO 38816 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-11T14:28:55.386-04:00  INFO 38816 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-08-11T14:28:55.430-04:00  INFO 38816 --- [equispedia] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1689 ms
+2026-08-11T14:28:55.592-04:00  INFO 38816 --- [equispedia] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-11T14:28:55.632-04:00  INFO 38816 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-08-11T14:28:56.003-04:00  INFO 38816 --- [equispedia] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-11T14:28:56.027-04:00  INFO 38816 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-11T14:28:56.130-04:00  INFO 38816 --- [equispedia] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2f782c87
+2026-08-11T14:28:56.131-04:00  INFO 38816 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-11T14:28:56.151-04:00  WARN 38816 --- [equispedia] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-11T14:28:56.169-04:00  INFO 38816 --- [equispedia] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/equispedia]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.18
+	Default catalog/schema: equispedia/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-11T14:28:57.116-04:00  INFO 38816 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-11T14:28:57.205-04:00  INFO 38816 --- [equispedia] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:28:57.279-04:00  INFO 38816 --- [equispedia] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-11T14:28:58.535-04:00  WARN 38816 --- [equispedia] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-11T14:28:58.586-04:00  WARN 38816 --- [equispedia] [restartedMain] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: bc233663-0292-403d-9ec8-d382db259028
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-11T14:28:58.593-04:00  INFO 38816 --- [equispedia] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-11T14:28:58.952-04:00  INFO 38816 --- [equispedia] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-08-11T14:28:59.109-04:00  INFO 38816 --- [equispedia] [restartedMain] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: [PropertyDetailResponse]
+2026-08-11T14:28:59.128-04:00  INFO 38816 --- [equispedia] [restartedMain] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-08-11T14:28:59.177-04:00  INFO 38816 --- [equispedia] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-08-11T14:29:00.025-04:00  INFO 38816 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-08-11T14:29:00.030-04:00  INFO 38816 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Started EquispediaApplicationKt in 6.678 seconds (process running for 7.33)
+2026-08-11T14:29:17.041-04:00  INFO 38816 --- [equispedia] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-11T14:29:17.041-04:00  INFO 38816 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-11T14:29:17.043-04:00  INFO 38816 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-08-11T14:29:43.301-04:00 ERROR 38816 --- [equispedia] [task-1] c.e.equispedia.Services.EmailService     : Failed to send email to $toEmail
+
+org.springframework.mail.MailSendException: Mail server connection failed. Failed messages: jakarta.mail.MessagingException: Could not convert socket to TLS;
+  nested exception is:
+	javax.net.ssl.SSLHandshakeException: (certificate_unknown) No subject alternative DNS name matching mail.equispedia.online found.; message exceptions (1) are:
+Failed message 1: jakarta.mail.MessagingException: Could not convert socket to TLS;
+  nested exception is:
+	javax.net.ssl.SSLHandshakeException: (certificate_unknown) No subject alternative DNS name matching mail.equispedia.online found.
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:397) ~[spring-context-support-7.0.7.jar:7.0.7]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:337) ~[spring-context-support-7.0.7.jar:7.0.7]
+	at org.springframework.mail.javamail.JavaMailSender.send(JavaMailSender.java:101) ~[spring-context-support-7.0.7.jar:7.0.7]
+	at com.example.equispedia.Services.EmailService.sendBookingConfirmation(EmailService.kt:84) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.7.jar:7.0.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-7.0.7.jar:7.0.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158) ~[spring-aop-7.0.7.jar:7.0.7]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:112) ~[spring-aop-7.0.7.jar:7.0.7]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:330) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+Caused by: jakarta.mail.MessagingException: Could not convert socket to TLS;
+  nested exception is:
+	javax.net.ssl.SSLHandshakeException: (certificate_unknown) No subject alternative DNS name matching mail.equispedia.online found.
+	at org.eclipse.angus.mail.smtp.SMTPTransport.startTLS(SMTPTransport.java:2173) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:741) ~[angus-mail-2.0.5.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-api-2.1.5.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:467) ~[spring-context-support-7.0.7.jar:7.0.7]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:386) ~[spring-context-support-7.0.7.jar:7.0.7]
+	... 13 common frames omitted
+Caused by: javax.net.ssl.SSLHandshakeException: (certificate_unknown) No subject alternative DNS name matching mail.equispedia.online found.
+	at java.base/sun.security.ssl.Alert.createSSLException(Alert.java:130) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:376) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:319) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:314) ~[na:na]
+	at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(CertificateMessage.java:1310) ~[na:na]
+	at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.onConsumeCertificate(CertificateMessage.java:1172) ~[na:na]
+	at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.consume(CertificateMessage.java:1115) ~[na:na]
+	at java.base/sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:421) ~[na:na]
+	at java.base/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:477) ~[na:na]
+	at java.base/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:448) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.dispatch(TransportContext.java:199) ~[na:na]
+	at java.base/sun.security.ssl.SSLTransport.decode(SSLTransport.java:172) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1421) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:455) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:426) ~[na:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.configureSSLSocket(SocketFetcher.java:662) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.startTLS(SocketFetcher.java:563) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.startTLS(SMTPTransport.java:2168) ~[angus-mail-2.0.5.jar:na]
+	... 17 common frames omitted
+Caused by: java.security.cert.CertificateException: No subject alternative DNS name matching mail.equispedia.online found.
+	at java.base/sun.security.util.HostnameChecker.matchDNS(HostnameChecker.java:207) ~[na:na]
+	at java.base/sun.security.util.HostnameChecker.match(HostnameChecker.java:103) ~[na:na]
+	at java.base/sun.security.ssl.X509TrustManagerImpl.checkIdentity(X509TrustManagerImpl.java:512) ~[na:na]
+	at java.base/sun.security.ssl.X509TrustManagerImpl.checkIdentity(X509TrustManagerImpl.java:459) ~[na:na]
+	at java.base/sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:237) ~[na:na]
+	at java.base/sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:135) ~[na:na]
+	at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(CertificateMessage.java:1285) ~[na:na]
+	... 31 common frames omitted
+
+2026-08-11T14:32:20.376-04:00  INFO 38816 --- [equispedia] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-11T14:32:20.381-04:00  INFO 38816 --- [equispedia] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-11T14:32:20.386-04:00  INFO 38816 --- [equispedia] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:32:20.388-04:00  INFO 38816 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-11T14:32:20.391-04:00  INFO 38816 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-11T14:32:23.691-04:00  INFO 14280 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Starting EquispediaApplicationKt using Java 26.0.1 with PID 14280 (C:\Users\arge_\Desktop\equispedia_back\target\classes started by arge_ in C:\Users\arge_\Desktop\equispedia_back)
+2026-08-11T14:32:23.693-04:00  INFO 14280 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2026-08-11T14:32:23.736-04:00  INFO 14280 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-11T14:32:23.736-04:00  INFO 14280 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-11T14:32:24.686-04:00  INFO 14280 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-11T14:32:24.821-04:00  INFO 14280 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 127 ms. Found 19 JPA repository interfaces.
+2026-08-11T14:32:25.237-04:00  INFO 14280 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-08-11T14:32:25.246-04:00  INFO 14280 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-11T14:32:25.246-04:00  INFO 14280 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-08-11T14:32:25.289-04:00  INFO 14280 --- [equispedia] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1553 ms
+2026-08-11T14:32:25.433-04:00  INFO 14280 --- [equispedia] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-11T14:32:25.470-04:00  INFO 14280 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-08-11T14:32:25.842-04:00  INFO 14280 --- [equispedia] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-11T14:32:25.865-04:00  INFO 14280 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-11T14:32:25.961-04:00  INFO 14280 --- [equispedia] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@7573e1ca
+2026-08-11T14:32:25.963-04:00  INFO 14280 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-11T14:32:25.986-04:00  WARN 14280 --- [equispedia] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-11T14:32:26.005-04:00  INFO 14280 --- [equispedia] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/equispedia]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.18
+	Default catalog/schema: equispedia/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-11T14:32:26.902-04:00  INFO 14280 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-11T14:32:26.968-04:00  INFO 14280 --- [equispedia] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:32:27.036-04:00  INFO 14280 --- [equispedia] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-11T14:32:28.263-04:00  WARN 14280 --- [equispedia] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-11T14:32:28.308-04:00  WARN 14280 --- [equispedia] [restartedMain] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: b7bd29a1-c289-469d-a1a2-4b0076a6413e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-11T14:32:28.314-04:00  INFO 14280 --- [equispedia] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-11T14:32:28.631-04:00  INFO 14280 --- [equispedia] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-08-11T14:32:28.792-04:00  INFO 14280 --- [equispedia] [restartedMain] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: [PropertyDetailResponse]
+2026-08-11T14:32:28.812-04:00  INFO 14280 --- [equispedia] [restartedMain] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-08-11T14:32:28.857-04:00  INFO 14280 --- [equispedia] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-08-11T14:32:29.691-04:00  INFO 14280 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-08-11T14:32:29.696-04:00  INFO 14280 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Started EquispediaApplicationKt in 6.301 seconds (process running for 6.905)
+2026-08-11T14:32:29.876-04:00  INFO 14280 --- [equispedia] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-11T14:32:29.876-04:00  INFO 14280 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-11T14:32:29.877-04:00  INFO 14280 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-08-11T14:33:12.328-04:00 ERROR 14280 --- [equispedia] [task-1] c.e.equispedia.Services.EmailService     : Failed to send email to $toEmail
+
+org.springframework.mail.MailSendException: Mail server connection failed. Failed messages: jakarta.mail.MessagingException: Could not convert socket to TLS;
+  nested exception is:
+	javax.net.ssl.SSLHandshakeException: (certificate_unknown) No subject alternative DNS name matching mail.equispedia.online found.; message exceptions (1) are:
+Failed message 1: jakarta.mail.MessagingException: Could not convert socket to TLS;
+  nested exception is:
+	javax.net.ssl.SSLHandshakeException: (certificate_unknown) No subject alternative DNS name matching mail.equispedia.online found.
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:397) ~[spring-context-support-7.0.7.jar:7.0.7]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.send(JavaMailSenderImpl.java:337) ~[spring-context-support-7.0.7.jar:7.0.7]
+	at org.springframework.mail.javamail.JavaMailSender.send(JavaMailSender.java:101) ~[spring-context-support-7.0.7.jar:7.0.7]
+	at com.example.equispedia.Services.EmailService.sendBookingConfirmation(EmailService.kt:84) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359) ~[spring-aop-7.0.7.jar:7.0.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190) ~[spring-aop-7.0.7.jar:7.0.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158) ~[spring-aop-7.0.7.jar:7.0.7]
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:112) ~[spring-aop-7.0.7.jar:7.0.7]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:330) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614) ~[na:na]
+	at java.base/java.lang.Thread.run(Thread.java:1516) ~[na:na]
+Caused by: jakarta.mail.MessagingException: Could not convert socket to TLS;
+  nested exception is:
+	javax.net.ssl.SSLHandshakeException: (certificate_unknown) No subject alternative DNS name matching mail.equispedia.online found.
+	at org.eclipse.angus.mail.smtp.SMTPTransport.startTLS(SMTPTransport.java:2173) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.protocolConnect(SMTPTransport.java:741) ~[angus-mail-2.0.5.jar:na]
+	at jakarta.mail.Service.connect(Service.java:345) ~[jakarta.mail-api-2.1.5.jar:na]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.connectTransport(JavaMailSenderImpl.java:467) ~[spring-context-support-7.0.7.jar:7.0.7]
+	at org.springframework.mail.javamail.JavaMailSenderImpl.doSend(JavaMailSenderImpl.java:386) ~[spring-context-support-7.0.7.jar:7.0.7]
+	... 13 common frames omitted
+Caused by: javax.net.ssl.SSLHandshakeException: (certificate_unknown) No subject alternative DNS name matching mail.equispedia.online found.
+	at java.base/sun.security.ssl.Alert.createSSLException(Alert.java:130) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:376) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:319) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:314) ~[na:na]
+	at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(CertificateMessage.java:1310) ~[na:na]
+	at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.onConsumeCertificate(CertificateMessage.java:1172) ~[na:na]
+	at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.consume(CertificateMessage.java:1115) ~[na:na]
+	at java.base/sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:421) ~[na:na]
+	at java.base/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:477) ~[na:na]
+	at java.base/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:448) ~[na:na]
+	at java.base/sun.security.ssl.TransportContext.dispatch(TransportContext.java:199) ~[na:na]
+	at java.base/sun.security.ssl.SSLTransport.decode(SSLTransport.java:172) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1506) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1421) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:455) ~[na:na]
+	at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:426) ~[na:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.configureSSLSocket(SocketFetcher.java:662) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.util.SocketFetcher.startTLS(SocketFetcher.java:563) ~[angus-mail-2.0.5.jar:na]
+	at org.eclipse.angus.mail.smtp.SMTPTransport.startTLS(SMTPTransport.java:2168) ~[angus-mail-2.0.5.jar:na]
+	... 17 common frames omitted
+Caused by: java.security.cert.CertificateException: No subject alternative DNS name matching mail.equispedia.online found.
+	at java.base/sun.security.util.HostnameChecker.matchDNS(HostnameChecker.java:207) ~[na:na]
+	at java.base/sun.security.util.HostnameChecker.match(HostnameChecker.java:103) ~[na:na]
+	at java.base/sun.security.ssl.X509TrustManagerImpl.checkIdentity(X509TrustManagerImpl.java:512) ~[na:na]
+	at java.base/sun.security.ssl.X509TrustManagerImpl.checkIdentity(X509TrustManagerImpl.java:459) ~[na:na]
+	at java.base/sun.security.ssl.AbstractTrustManagerWrapper.checkAdditionalTrust(SSLContextImpl.java:1453) ~[na:na]
+	at java.base/sun.security.ssl.AbstractTrustManagerWrapper.checkServerTrusted(SSLContextImpl.java:1421) ~[na:na]
+	at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(CertificateMessage.java:1285) ~[na:na]
+	... 31 common frames omitted
+
+2026-08-11T14:34:29.385-04:00  INFO 14280 --- [equispedia] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-11T14:34:29.390-04:00  INFO 14280 --- [equispedia] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-11T14:34:29.395-04:00  INFO 14280 --- [equispedia] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:34:29.397-04:00  INFO 14280 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-11T14:34:29.400-04:00  INFO 14280 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-11T14:34:32.301-04:00  INFO 44240 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Starting EquispediaApplicationKt using Java 26.0.1 with PID 44240 (C:\Users\arge_\Desktop\equispedia_back\target\classes started by arge_ in C:\Users\arge_\Desktop\equispedia_back)
+2026-08-11T14:34:32.303-04:00  INFO 44240 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2026-08-11T14:34:32.348-04:00  INFO 44240 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-11T14:34:32.349-04:00  INFO 44240 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-11T14:34:33.249-04:00  INFO 44240 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-11T14:34:33.380-04:00  INFO 44240 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 125 ms. Found 19 JPA repository interfaces.
+2026-08-11T14:34:33.754-04:00  INFO 44240 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-08-11T14:34:33.762-04:00  INFO 44240 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-11T14:34:33.763-04:00  INFO 44240 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-08-11T14:34:33.806-04:00  INFO 44240 --- [equispedia] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1457 ms
+2026-08-11T14:34:33.948-04:00  INFO 44240 --- [equispedia] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-11T14:34:33.986-04:00  INFO 44240 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-08-11T14:34:34.320-04:00  INFO 44240 --- [equispedia] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-11T14:34:34.343-04:00  INFO 44240 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-11T14:34:34.434-04:00  INFO 44240 --- [equispedia] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2f782c87
+2026-08-11T14:34:34.435-04:00  INFO 44240 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-11T14:34:34.454-04:00  WARN 44240 --- [equispedia] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-11T14:34:34.468-04:00  INFO 44240 --- [equispedia] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/equispedia]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.18
+	Default catalog/schema: equispedia/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-11T14:34:35.284-04:00  INFO 44240 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-11T14:34:35.339-04:00  INFO 44240 --- [equispedia] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:34:35.396-04:00  INFO 44240 --- [equispedia] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-11T14:34:36.593-04:00  WARN 44240 --- [equispedia] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-11T14:34:36.643-04:00  WARN 44240 --- [equispedia] [restartedMain] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: e91ea97e-0693-429f-8832-c5735b1b4d20
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-11T14:34:36.648-04:00  INFO 44240 --- [equispedia] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-11T14:34:36.981-04:00  INFO 44240 --- [equispedia] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-08-11T14:34:37.124-04:00  INFO 44240 --- [equispedia] [restartedMain] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: [PropertyDetailResponse]
+2026-08-11T14:34:37.143-04:00  INFO 44240 --- [equispedia] [restartedMain] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-08-11T14:34:37.186-04:00  INFO 44240 --- [equispedia] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-08-11T14:34:38.013-04:00  INFO 44240 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-08-11T14:34:38.018-04:00  INFO 44240 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Started EquispediaApplicationKt in 6.004 seconds (process running for 6.583)
+2026-08-11T14:34:48.966-04:00  INFO 44240 --- [equispedia] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-11T14:34:48.966-04:00  INFO 44240 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-11T14:34:48.967-04:00  INFO 44240 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-08-11T14:35:32.123-04:00  INFO 44240 --- [equispedia] [task-1] c.e.equispedia.Services.EmailService     : Email sent successfully to $toEmail
+2026-08-11T14:37:53.782-04:00  INFO 44240 --- [equispedia] [task-2] c.e.equispedia.Services.EmailService     : Email sent successfully to $toEmail
+2026-08-11T14:39:50.277-04:00  INFO 44240 --- [equispedia] [task-3] c.e.equispedia.Services.EmailService     : Email sent successfully to $toEmail
+2026-08-11T14:46:00.426-04:00  INFO 44240 --- [equispedia] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-11T14:46:00.432-04:00  INFO 44240 --- [equispedia] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-11T14:46:00.437-04:00  INFO 44240 --- [equispedia] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:46:00.440-04:00  INFO 44240 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-11T14:46:00.442-04:00  INFO 44240 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-11T14:46:05.920-04:00  INFO 20112 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Starting EquispediaApplicationKt using Java 26.0.1 with PID 20112 (C:\Users\arge_\Desktop\equispedia_back\target\classes started by arge_ in C:\Users\arge_\Desktop\equispedia_back)
+2026-08-11T14:46:05.922-04:00  INFO 20112 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2026-08-11T14:46:05.969-04:00  INFO 20112 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-11T14:46:05.970-04:00  INFO 20112 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-11T14:46:06.976-04:00  INFO 20112 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-11T14:46:07.112-04:00  INFO 20112 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 128 ms. Found 19 JPA repository interfaces.
+2026-08-11T14:46:07.505-04:00  INFO 20112 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-08-11T14:46:07.513-04:00  INFO 20112 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-11T14:46:07.514-04:00  INFO 20112 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-08-11T14:46:07.555-04:00  INFO 20112 --- [equispedia] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1585 ms
+2026-08-11T14:46:07.701-04:00  INFO 20112 --- [equispedia] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-11T14:46:07.740-04:00  INFO 20112 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-08-11T14:46:08.079-04:00  INFO 20112 --- [equispedia] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-11T14:46:08.101-04:00  INFO 20112 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-11T14:46:08.189-04:00  INFO 20112 --- [equispedia] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@35794a5e
+2026-08-11T14:46:08.191-04:00  INFO 20112 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-11T14:46:08.210-04:00  WARN 20112 --- [equispedia] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-11T14:46:08.227-04:00  INFO 20112 --- [equispedia] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/equispedia]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.18
+	Default catalog/schema: equispedia/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-11T14:46:09.012-04:00  INFO 20112 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-11T14:46:09.071-04:00  INFO 20112 --- [equispedia] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:46:09.128-04:00  INFO 20112 --- [equispedia] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-11T14:46:10.399-04:00  WARN 20112 --- [equispedia] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-11T14:46:10.454-04:00  WARN 20112 --- [equispedia] [restartedMain] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: c089f45c-9bb9-4038-aed5-8658493e24f6
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-11T14:46:10.460-04:00  INFO 20112 --- [equispedia] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-11T14:46:10.792-04:00  INFO 20112 --- [equispedia] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-08-11T14:46:10.951-04:00  INFO 20112 --- [equispedia] [restartedMain] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: [PropertyDetailResponse]
+2026-08-11T14:46:10.972-04:00  INFO 20112 --- [equispedia] [restartedMain] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-08-11T14:46:11.015-04:00  INFO 20112 --- [equispedia] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-08-11T14:46:11.869-04:00  INFO 20112 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-08-11T14:46:11.874-04:00  INFO 20112 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Started EquispediaApplicationKt in 6.276 seconds (process running for 6.926)
+2026-08-11T14:50:37.623-04:00  INFO 20112 --- [equispedia] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-11T14:50:37.629-04:00  INFO 20112 --- [equispedia] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-11T14:50:37.633-04:00  INFO 20112 --- [equispedia] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:50:37.636-04:00  INFO 20112 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-11T14:50:37.638-04:00  INFO 20112 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-11T14:50:55.153-04:00  INFO 33040 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Starting EquispediaApplicationKt using Java 26.0.1 with PID 33040 (C:\Users\arge_\Desktop\equispedia_back\target\classes started by arge_ in C:\Users\arge_\Desktop\equispedia_back)
+2026-08-11T14:50:55.155-04:00  INFO 33040 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2026-08-11T14:50:55.202-04:00  INFO 33040 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-11T14:50:55.203-04:00  INFO 33040 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-11T14:50:56.363-04:00  INFO 33040 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-11T14:50:56.524-04:00  INFO 33040 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 154 ms. Found 19 JPA repository interfaces.
+2026-08-11T14:50:56.947-04:00  INFO 33040 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-08-11T14:50:56.955-04:00  INFO 33040 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-11T14:50:56.955-04:00  INFO 33040 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-08-11T14:50:57.000-04:00  INFO 33040 --- [equispedia] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1797 ms
+2026-08-11T14:50:57.142-04:00  INFO 33040 --- [equispedia] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-11T14:50:57.180-04:00  INFO 33040 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-08-11T14:50:57.523-04:00  INFO 33040 --- [equispedia] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-11T14:50:57.545-04:00  INFO 33040 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-11T14:50:57.634-04:00  INFO 33040 --- [equispedia] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@27e4f7d5
+2026-08-11T14:50:57.635-04:00  INFO 33040 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-11T14:50:57.653-04:00  WARN 33040 --- [equispedia] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-11T14:50:57.670-04:00  INFO 33040 --- [equispedia] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/equispedia]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.18
+	Default catalog/schema: equispedia/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-11T14:50:58.473-04:00  INFO 33040 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-11T14:50:58.533-04:00  INFO 33040 --- [equispedia] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:50:58.591-04:00  INFO 33040 --- [equispedia] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-11T14:50:59.747-04:00  WARN 33040 --- [equispedia] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-11T14:50:59.793-04:00  WARN 33040 --- [equispedia] [restartedMain] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 3ba48f5d-145e-47b8-9a1b-0c035aa9a66f
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-11T14:50:59.800-04:00  INFO 33040 --- [equispedia] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-11T14:51:00.123-04:00  INFO 33040 --- [equispedia] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-08-11T14:51:00.275-04:00  INFO 33040 --- [equispedia] [restartedMain] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: [PropertyDetailResponse]
+2026-08-11T14:51:00.293-04:00  INFO 33040 --- [equispedia] [restartedMain] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-08-11T14:51:00.335-04:00  INFO 33040 --- [equispedia] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-08-11T14:51:01.181-04:00  INFO 33040 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-08-11T14:51:01.186-04:00  INFO 33040 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Started EquispediaApplicationKt in 6.441 seconds (process running for 7.145)
+2026-08-11T14:51:02.412-04:00  INFO 33040 --- [equispedia] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-11T14:51:02.418-04:00  INFO 33040 --- [equispedia] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-11T14:51:02.422-04:00  INFO 33040 --- [equispedia] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:51:02.425-04:00  INFO 33040 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-11T14:51:02.427-04:00  INFO 33040 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-11T14:51:28.334-04:00  INFO 23920 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Starting EquispediaApplicationKt using Java 26.0.1 with PID 23920 (C:\Users\arge_\Desktop\equispedia_back\target\classes started by arge_ in C:\Users\arge_\Desktop\equispedia_back)
+2026-08-11T14:51:28.336-04:00  INFO 23920 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2026-08-11T14:51:28.380-04:00  INFO 23920 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-11T14:51:28.381-04:00  INFO 23920 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-11T14:51:29.510-04:00  INFO 23920 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-11T14:51:29.654-04:00  INFO 23920 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 136 ms. Found 19 JPA repository interfaces.
+2026-08-11T14:51:30.055-04:00  INFO 23920 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-08-11T14:51:30.066-04:00  INFO 23920 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-11T14:51:30.066-04:00  INFO 23920 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-08-11T14:51:30.112-04:00  INFO 23920 --- [equispedia] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1731 ms
+2026-08-11T14:51:30.270-04:00  INFO 23920 --- [equispedia] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-11T14:51:30.311-04:00  INFO 23920 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-08-11T14:51:30.653-04:00  INFO 23920 --- [equispedia] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-11T14:51:30.678-04:00  INFO 23920 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-11T14:51:30.769-04:00  INFO 23920 --- [equispedia] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@49de11c3
+2026-08-11T14:51:30.770-04:00  INFO 23920 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-11T14:51:30.791-04:00  WARN 23920 --- [equispedia] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-11T14:51:30.808-04:00  INFO 23920 --- [equispedia] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/equispedia]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.18
+	Default catalog/schema: equispedia/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-11T14:51:31.623-04:00  INFO 23920 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-11T14:51:31.681-04:00  INFO 23920 --- [equispedia] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:51:31.744-04:00  INFO 23920 --- [equispedia] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-11T14:51:32.960-04:00  WARN 23920 --- [equispedia] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-11T14:51:33.008-04:00  WARN 23920 --- [equispedia] [restartedMain] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: d69555b6-10fd-45d0-a45c-d0c01f22971e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-11T14:51:33.013-04:00  INFO 23920 --- [equispedia] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-11T14:51:33.348-04:00  INFO 23920 --- [equispedia] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-08-11T14:51:33.513-04:00  INFO 23920 --- [equispedia] [restartedMain] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: [PropertyDetailResponse]
+2026-08-11T14:51:33.534-04:00  INFO 23920 --- [equispedia] [restartedMain] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-08-11T14:51:33.583-04:00  INFO 23920 --- [equispedia] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-08-11T14:51:34.497-04:00  INFO 23920 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-08-11T14:51:34.501-04:00  INFO 23920 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Started EquispediaApplicationKt in 6.464 seconds (process running for 7.061)
+2026-08-11T14:51:39.559-04:00  INFO 23920 --- [equispedia] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-11T14:51:39.559-04:00  INFO 23920 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-11T14:51:39.561-04:00  INFO 23920 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-08-11T14:52:10.024-04:00  INFO 23920 --- [equispedia] [task-1] c.e.equispedia.Services.EmailService     : Email sent successfully to argenis.hosting@gmail.com
+2026-08-11T14:53:50.820-04:00  INFO 23920 --- [equispedia] [task-2] c.e.equispedia.Services.EmailService     : Email sent successfully to abenitez@hosting.cl
+2026-08-11T14:58:41.300-04:00  INFO 23920 --- [equispedia] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-11T14:58:41.306-04:00  INFO 23920 --- [equispedia] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-11T14:58:41.311-04:00  INFO 23920 --- [equispedia] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:58:41.313-04:00  INFO 23920 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-11T14:58:41.315-04:00  INFO 23920 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-11T14:58:45.316-04:00  INFO 11996 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Starting EquispediaApplicationKt using Java 26.0.1 with PID 11996 (C:\Users\arge_\Desktop\equispedia_back\target\classes started by arge_ in C:\Users\arge_\Desktop\equispedia_back)
+2026-08-11T14:58:45.319-04:00  INFO 11996 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2026-08-11T14:58:45.369-04:00  INFO 11996 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-11T14:58:45.369-04:00  INFO 11996 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-11T14:58:46.317-04:00  INFO 11996 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-11T14:58:46.449-04:00  INFO 11996 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 125 ms. Found 19 JPA repository interfaces.
+2026-08-11T14:58:46.843-04:00  INFO 11996 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-08-11T14:58:46.851-04:00  INFO 11996 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-11T14:58:46.852-04:00  INFO 11996 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-08-11T14:58:46.896-04:00  INFO 11996 --- [equispedia] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1527 ms
+2026-08-11T14:58:47.046-04:00  INFO 11996 --- [equispedia] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-11T14:58:47.085-04:00  INFO 11996 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-08-11T14:58:47.433-04:00  INFO 11996 --- [equispedia] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-11T14:58:47.457-04:00  INFO 11996 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-11T14:58:47.556-04:00  INFO 11996 --- [equispedia] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6a4f6e32
+2026-08-11T14:58:47.557-04:00  INFO 11996 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-11T14:58:47.582-04:00  WARN 11996 --- [equispedia] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-11T14:58:47.601-04:00  INFO 11996 --- [equispedia] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/equispedia]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.18
+	Default catalog/schema: equispedia/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-11T14:58:48.433-04:00  INFO 11996 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-11T14:58:48.493-04:00  INFO 11996 --- [equispedia] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T14:58:48.555-04:00  INFO 11996 --- [equispedia] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-11T14:58:49.793-04:00  WARN 11996 --- [equispedia] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-11T14:58:49.845-04:00  WARN 11996 --- [equispedia] [restartedMain] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: fec3664e-62da-468c-a428-794b8807def9
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-11T14:58:49.850-04:00  INFO 11996 --- [equispedia] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-11T14:58:50.206-04:00  INFO 11996 --- [equispedia] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-08-11T14:58:50.372-04:00  INFO 11996 --- [equispedia] [restartedMain] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: [PropertyDetailResponse]
+2026-08-11T14:58:50.392-04:00  INFO 11996 --- [equispedia] [restartedMain] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-08-11T14:58:50.439-04:00  INFO 11996 --- [equispedia] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-08-11T14:58:51.420-04:00  INFO 11996 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-08-11T14:58:51.425-04:00  INFO 11996 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Started EquispediaApplicationKt in 6.399 seconds (process running for 6.968)
+2026-08-11T14:59:00.195-04:00  INFO 11996 --- [equispedia] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-11T14:59:00.195-04:00  INFO 11996 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-11T14:59:00.197-04:00  INFO 11996 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-08-11T14:59:33.180-04:00  INFO 11996 --- [equispedia] [task-1] c.e.equispedia.Services.EmailService     : Email sent successfully to abenitez@hosting.cl
+2026-08-11T15:15:01.931-04:00  INFO 11996 --- [equispedia] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-11T15:15:01.936-04:00  INFO 11996 --- [equispedia] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-11T15:15:01.941-04:00  INFO 11996 --- [equispedia] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T15:15:01.943-04:00  INFO 11996 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-11T15:15:01.946-04:00  INFO 11996 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-11T15:15:06.778-04:00  INFO 27420 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Starting EquispediaApplicationKt using Java 26.0.1 with PID 27420 (C:\Users\arge_\Desktop\equispedia_back\target\classes started by arge_ in C:\Users\arge_\Desktop\equispedia_back)
+2026-08-11T15:15:06.781-04:00  INFO 27420 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2026-08-11T15:15:06.828-04:00  INFO 27420 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-11T15:15:06.828-04:00  INFO 27420 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-11T15:15:07.829-04:00  INFO 27420 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-11T15:15:07.976-04:00  INFO 27420 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 140 ms. Found 19 JPA repository interfaces.
+2026-08-11T15:15:08.407-04:00  INFO 27420 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-08-11T15:15:08.416-04:00  INFO 27420 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-11T15:15:08.416-04:00  INFO 27420 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-08-11T15:15:08.462-04:00  INFO 27420 --- [equispedia] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1634 ms
+2026-08-11T15:15:08.622-04:00  INFO 27420 --- [equispedia] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-11T15:15:08.660-04:00  INFO 27420 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-08-11T15:15:09.003-04:00  INFO 27420 --- [equispedia] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-11T15:15:09.026-04:00  INFO 27420 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-11T15:15:09.116-04:00  INFO 27420 --- [equispedia] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3412c0d9
+2026-08-11T15:15:09.117-04:00  INFO 27420 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-11T15:15:09.136-04:00  WARN 27420 --- [equispedia] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-11T15:15:09.152-04:00  INFO 27420 --- [equispedia] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/equispedia]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.18
+	Default catalog/schema: equispedia/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-11T15:15:09.926-04:00  INFO 27420 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-11T15:15:09.985-04:00  INFO 27420 --- [equispedia] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T15:15:10.043-04:00  INFO 27420 --- [equispedia] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-11T15:15:11.317-04:00  WARN 27420 --- [equispedia] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-11T15:15:11.367-04:00  WARN 27420 --- [equispedia] [restartedMain] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 711cd126-0092-4fff-b201-2bbcabf20778
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-11T15:15:11.373-04:00  INFO 27420 --- [equispedia] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-11T15:15:11.713-04:00  INFO 27420 --- [equispedia] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-08-11T15:15:11.856-04:00  INFO 27420 --- [equispedia] [restartedMain] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: [PropertyDetailResponse]
+2026-08-11T15:15:11.875-04:00  INFO 27420 --- [equispedia] [restartedMain] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-08-11T15:15:11.919-04:00  INFO 27420 --- [equispedia] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-08-11T15:15:12.907-04:00  INFO 27420 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-08-11T15:15:12.912-04:00  INFO 27420 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Started EquispediaApplicationKt in 6.454 seconds (process running for 7.022)
+2026-08-11T15:15:40.612-04:00  INFO 27420 --- [equispedia] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-11T15:15:40.613-04:00  INFO 27420 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-11T15:15:40.614-04:00  INFO 27420 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-08-11T15:16:06.193-04:00  INFO 27420 --- [equispedia] [task-1] c.e.equispedia.Services.EmailService     : Email sent successfully to abenitez@hosting.cl
+2026-08-11T15:27:58.540-04:00  INFO 27420 --- [equispedia] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-08-11T15:27:58.545-04:00  INFO 27420 --- [equispedia] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-08-11T15:27:58.551-04:00  INFO 27420 --- [equispedia] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T15:27:58.553-04:00  INFO 27420 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-08-11T15:27:58.555-04:00  INFO 27420 --- [equispedia] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-08-11T15:28:02.768-04:00  INFO 32136 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Starting EquispediaApplicationKt using Java 26.0.1 with PID 32136 (C:\Users\arge_\Desktop\equispedia_back\target\classes started by arge_ in C:\Users\arge_\Desktop\equispedia_back)
+2026-08-11T15:28:02.770-04:00  INFO 32136 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : No active profile set, falling back to 1 default profile: "default"
+2026-08-11T15:28:02.815-04:00  INFO 32136 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-08-11T15:28:02.816-04:00  INFO 32136 --- [equispedia] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-08-11T15:28:03.744-04:00  INFO 32136 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-11T15:28:03.884-04:00  INFO 32136 --- [equispedia] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 133 ms. Found 19 JPA repository interfaces.
+2026-08-11T15:28:04.324-04:00  INFO 32136 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8081 (http)
+2026-08-11T15:28:04.333-04:00  INFO 32136 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-11T15:28:04.333-04:00  INFO 32136 --- [equispedia] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.21]
+2026-08-11T15:28:04.375-04:00  INFO 32136 --- [equispedia] [restartedMain] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1559 ms
+2026-08-11T15:28:04.527-04:00  INFO 32136 --- [equispedia] [restartedMain] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-11T15:28:04.567-04:00  INFO 32136 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.12.Final
+2026-08-11T15:28:04.920-04:00  INFO 32136 --- [equispedia] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-11T15:28:04.946-04:00  INFO 32136 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-11T15:28:05.036-04:00  INFO 32136 --- [equispedia] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@c900206
+2026-08-11T15:28:05.038-04:00  INFO 32136 --- [equispedia] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-11T15:28:05.057-04:00  WARN 32136 --- [equispedia] [restartedMain] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-08-11T15:28:05.073-04:00  INFO 32136 --- [equispedia] [restartedMain] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:15432/equispedia]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 15.18
+	Default catalog/schema: equispedia/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-11T15:28:05.982-04:00  INFO 32136 --- [equispedia] [restartedMain] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-11T15:28:06.050-04:00  INFO 32136 --- [equispedia] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-11T15:28:06.117-04:00  INFO 32136 --- [equispedia] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-11T15:28:07.577-04:00  WARN 32136 --- [equispedia] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-11T15:28:07.626-04:00  WARN 32136 --- [equispedia] [restartedMain] .s.a.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 8a6b7d89-9b14-42c2-a0d2-7f3ba0ed9888
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-08-11T15:28:07.631-04:00  INFO 32136 --- [equispedia] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-08-11T15:28:07.978-04:00  INFO 32136 --- [equispedia] [restartedMain] efaultSchemaResourceGraphQlSourceBuilder : Loaded 1 resource(s) in the GraphQL schema.
+2026-08-11T15:28:08.136-04:00  INFO 32136 --- [equispedia] [restartedMain] o.s.b.g.a.GraphQlAutoConfiguration       : GraphQL schema inspection:
+	Unmapped fields: {}
+	Unmapped registrations: {}
+	Unmapped arguments: {}
+	Field nullness errors: {}
+	Argument nullness errors: {}
+	Skipped types: [PropertyDetailResponse]
+2026-08-11T15:28:08.156-04:00  INFO 32136 --- [equispedia] [restartedMain] s.b.g.a.s.GraphQlWebMvcAutoConfiguration : GraphQL endpoint HTTP POST /graphql
+2026-08-11T15:28:08.206-04:00  INFO 32136 --- [equispedia] [restartedMain] o.s.v.b.OptionalValidatorFactoryBean     : Failed to set up a Bean Validation provider: jakarta.validation.NoProviderFoundException: Unable to create a Configuration, because no Jakarta Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+2026-08-11T15:28:09.265-04:00  INFO 32136 --- [equispedia] [restartedMain] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8081 (http) with context path '/'
+2026-08-11T15:28:09.270-04:00  INFO 32136 --- [equispedia] [restartedMain] c.e.equispedia.EquispediaApplicationKt   : Started EquispediaApplicationKt in 6.796 seconds (process running for 7.426)
+2026-08-11T15:28:11.378-04:00  INFO 32136 --- [equispedia] [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-11T15:28:11.378-04:00  INFO 32136 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-11T15:28:11.379-04:00  INFO 32136 --- [equispedia] [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-08-11T15:28:38.695-04:00  INFO 32136 --- [equispedia] [task-1] c.e.equispedia.Services.EmailService     : Email sent successfully to abenitez@hosting.cl
