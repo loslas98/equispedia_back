@@ -16,7 +16,11 @@ data class BookingRequest(
     val checkIn: LocalDate,
     val checkOut: LocalDate,
     val totalPrice: BigDecimal,
-    val items: List<BookingItemRequest>
+    val items: List<BookingItemRequest>,
+    val guestEmail: String? = null,
+    val guestFirstName: String? = null,
+    val guestLastName: String? = null,
+    val guestPhone: String? = null
 )
 
 data class BookingItemResponse(

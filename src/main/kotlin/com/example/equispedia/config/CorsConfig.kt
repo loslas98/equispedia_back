@@ -8,7 +8,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 class CorsConfig : WebMvcConfigurer {
     override fun addCorsMappings(registry: CorsRegistry) {
         registry.addMapping("/**") // Aplica a todos los endpoints
-            .allowedOrigins("http://localhost:5173", "https://equispedia.online", "https://www.equispedia.online") // Origen de tu frontend local
+.allowedOrigins(
+                "http://localhost:5173", 
+                "http://localhost:4173", 
+                "https://equispedia.online", 
+                "https://www.equispedia.online"
+            ) // Orígenes de frontend local, preview y producción
             .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Métodos permitidos
             .allowedHeaders("*") // Permite cualquier cabecera
             .allowCredentials(true) // Permite el envío de cookies o credenciales
