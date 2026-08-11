@@ -49,6 +49,7 @@ jobs:
               -e DB_USER="${{ secrets.DB_USER }}" \
               -e DB_PASSWORD="${{ secrets.DB_PASSWORD }}" \
               -e JWT_SECRET="${{ secrets.JWT_SECRET }}" \
+              -e STRIPE_SECRET_KEY="${{ secrets.STRIPE_SECRET_KEY }}" \
               iad.ocir.io/${{ secrets.OCIR_USERNAME }}/equispedia-backend:latest
 
       - name: Deploy to OCI instance via SSH
