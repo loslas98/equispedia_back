@@ -7,11 +7,16 @@ import org.springframework.http.ResponseEntity
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.web.bind.annotation.*
 import java.security.Principal
+import com.example.equispedia.DTO.BookingResponse
 import com.example.equispedia.DTO.PropertySummaryResponse
+import com.example.equispedia.Services.BookingService
 
 @RestController
 @RequestMapping("/api/users")
-class UserController(private val userService: UserService) {
+class UserController(
+    private val userService: UserService,
+    private val bookingService: BookingService
+) {
 
     @PostMapping
     fun createUser(@RequestBody request: UserCreateRequest): ResponseEntity<UserResponse> {
@@ -34,5 +39,11 @@ class UserController(private val userService: UserService) {
     fun getMyFavorites(principal: Principal): ResponseEntity<List<PropertySummaryResponse>> {
         val favorites = userService.getMyFavorites(principal.name)
         return ResponseEntity.ok(favorites)
+    }
+
+    @GetMapping("/me/bookings")
+    fun getMyBookings(principal: Principal): ResponseEntity<List<BookingResponse>> {
+        val bookings = bookingService.getMyBookings(principal.name)
+        return ResponseEntity.ok(bookings)
     }
 }

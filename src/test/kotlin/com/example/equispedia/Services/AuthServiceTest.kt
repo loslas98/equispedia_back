@@ -85,4 +85,24 @@ class AuthServiceTest {
         }
         assertEquals("Invalid credentials", exception.message)
     }
+    @Test
+    fun `getMe should return user info`() {
+        val user = User(id = 1, email = "test@test.com", passwordHash = "encoded", fullName = "Test User")
+        every { userRepository.findByEmail("test@test.com") } returns user
+
+        val response = authService.getMe("test@test.com")
+
+        assertEquals("test@test.com", response.email)
+        assertEquals("Test User", response.fullName)
+    }
+
+    @Test
+    fun `getMe should throw exception if user not found`() {
+        every { userRepository.findByEmail("notfound@test.com") } returns null
+
+        val exception = assertThrows(IllegalArgumentException::class.java) {
+            authService.getMe("notfound@test.com")
+        }
+        assertEquals("User not found", exception.message)
+    }
 }

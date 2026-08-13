@@ -52,4 +52,60 @@ class UserServiceTest {
 
         assertEquals(null, result)
     }
+
+    @Test
+    fun `toggleFavorite should add property to favorites if not present`() {
+        val user = User(id = 1, email = "test@test.com", passwordHash = "hash", fullName = "Test")
+        val propertyType = com.example.equispedia.Models.PropertyType(name = "Hotel")
+        val region = com.example.equispedia.Models.Region(name = "City", type = com.example.equispedia.Models.RegionType.CITY)
+        val property = com.example.equispedia.Models.Property(
+            id = 1, name = "Prop 1", description = "Desc",
+            propertyType = propertyType, region = region, address = "123 St",
+            latitude = java.math.BigDecimal("0.0"), longitude = java.math.BigDecimal("0.0")
+        )
+        
+        every { userRepository.findById(1) } returns Optional.of(user)
+        every { propertyRepository.findById(1) } returns Optional.of(property)
+        every { userRepository.save(user) } returns user
+
+        val result = userService.toggleFavorite(1, 1)
+
+        assertEquals(true, result)
+        assertEquals(1, user.favoriteProperties.size)
+        verify { userRepository.save(user) }
+    }
+
+    @Test
+    fun `toggleFavorite should remove property from favorites if present`() {
+        val propertyType = com.example.equispedia.Models.PropertyType(name = "Hotel")
+        val region = com.example.equispedia.Models.Region(name = "City", type = com.example.equispedia.Models.RegionType.CITY)
+        val property = com.example.equispedia.Models.Property(
+            id = 1, name = "Prop 1", description = "Desc",
+            propertyType = propertyType, region = region, address = "123 St",
+            latitude = java.math.BigDecimal("0.0"), longitude = java.math.BigDecimal("0.0")
+        )
+        val user = User(id = 1, email = "test@test.com", passwordHash = "hash", fullName = "Test").apply {
+            favoriteProperties.add(property)
+        }
+        
+        every { userRepository.findById(1) } returns Optional.of(user)
+        every { propertyRepository.findById(1) } returns Optional.of(property)
+        every { userRepository.save(user) } returns user
+
+        val result = userService.toggleFavorite(1, 1)
+
+        assertEquals(false, result)
+        assertEquals(0, user.favoriteProperties.size)
+        verify { userRepository.save(user) }
+    }
+
+    @Test
+    fun `getMyFavorites should return empty list if user has no favorites`() {
+        val user = User(id = 1, email = "test@test.com", passwordHash = "hash", fullName = "Test")
+        every { userRepository.findByEmail("test@test.com") } returns user
+
+        val result = userService.getMyFavorites("test@test.com")
+
+        assertEquals(0, result.size)
+    }
 }

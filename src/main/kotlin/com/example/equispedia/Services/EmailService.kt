@@ -14,7 +14,9 @@ import org.slf4j.LoggerFactory
 
 @Service
 class EmailService(
-    private val mailSender: JavaMailSender
+    private val mailSender: JavaMailSender,
+    @org.springframework.beans.factory.annotation.Value("\${spring.mail.username}")
+    private val fromEmail: String
 ) {
 
     private val log = LoggerFactory.getLogger(EmailService::class.java)
@@ -142,7 +144,7 @@ class EmailService(
             val message: MimeMessage = mailSender.createMimeMessage()
             val helper = MimeMessageHelper(message, true, "UTF-8")
             
-            helper.setFrom("no-reply@equispedia.online", "Equispedia")
+            helper.setFrom(fromEmail, "Equispedia")
             helper.setTo(toEmail)
             helper.setSubject(subject)
             helper.setText(body, true) // true indicates HTML
@@ -160,7 +162,7 @@ class EmailService(
                 setTo(to)
                 setSubject(subject)
                 setText(body)
-                setFrom("no-reply@equispedia.com")
+                setFrom(fromEmail)
             }
             mailSender.send(message)
             log.info("Email sent successfully to $to")

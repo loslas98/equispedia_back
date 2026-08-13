@@ -78,7 +78,7 @@ class BookingServiceTest {
             longitude = 0.0.toBigDecimal(),
             starRating = 5
         )
-        
+        every { userRepository.findByEmail("guest@example.com") } returns user
         every { userRepository.findById(request.userId) } returns Optional.of(user)
         every { propertyRepository.findById(request.propertyId) } returns Optional.of(property)
         
@@ -110,5 +110,29 @@ class BookingServiceTest {
             items = any(),
             propertyImageUrl = any()
         )}
+    }
+
+    @Test
+    fun `createBooking should save items correctly`() {
+        val request = BookingRequest(
+            userId = 1, propertyId = 1, checkIn = LocalDate.now(), checkOut = LocalDate.now().plusDays(1),
+            totalPrice = 150.0.toBigDecimal(), items = listOf(com.example.equispedia.DTO.BookingItemRequest(1, 2))
+        )
+        val user = User(id = 1, email = "u@e.com", fullName = "U", passwordHash = "h")
+        val prop = Property(id = 1, name = "H", address = "A", propertyType = mockk(relaxed=true), region = mockk(relaxed=true), latitude = 0.0.toBigDecimal(), longitude = 0.0.toBigDecimal())
+        val roomType = com.example.equispedia.Models.RoomType(id = 1, property = prop, name = "R", maxOccupancyAdults = 2, maxOccupancyChildren = 0, basePricePerNight = java.math.BigDecimal.ZERO)
+        val savedBooking = Booking(id = 1, user = user, property = prop, checkIn = request.checkIn, checkOut = request.checkOut, totalPrice = request.totalPrice, status = com.example.equispedia.Models.BookingStatus.PAID)
+        
+        every { userRepository.findByEmail(any()) } returns null
+        every { userRepository.findById(1) } returns Optional.of(user)
+        every { propertyRepository.findById(1) } returns Optional.of(prop)
+        every { roomTypeRepository.findById(1) } returns Optional.of(roomType)
+        every { bookingRepository.save(any()) } returns savedBooking
+        every { bookingItemRepository.save(any()) } answers { firstArg() }
+
+        val response = bookingService.createBooking(request)
+
+        assertEquals(1, response.items.size)
+        verify { bookingItemRepository.save(any()) }
     }
 }

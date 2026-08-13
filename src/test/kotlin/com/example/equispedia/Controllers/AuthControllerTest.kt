@@ -1,15 +1,14 @@
 package com.example.equispedia.Controllers
 
-import com.example.equispedia.DTO.AuthResponse
-import com.example.equispedia.DTO.LoginRequest
-import com.example.equispedia.DTO.RegisterRequest
+import com.example.equispedia.DTO.*
 import com.example.equispedia.Services.AuthService
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
+import org.springframework.security.core.context.SecurityContextHolder
 
 class AuthControllerTest {
 
@@ -17,43 +16,62 @@ class AuthControllerTest {
     private val authController = AuthController(authService)
 
     @Test
-    fun `register should return ok when service succeeds`() {
-        val request = RegisterRequest("test@example.com", "password", "Test User")
-        val userInfo = com.example.equispedia.DTO.UserInfoResponse("test@example.com", "Test User", 1)
-        val expectedResponse = AuthResponse("token123", userInfo)
-        
-        every { authService.register(request) } returns expectedResponse
+    fun `register should return ok`() {
+        val req = RegisterRequest("test@test.com", "pass", "Test")
+        val res = AuthResponse("token", UserInfoResponse("test@test.com", "Test", 1))
+        every { authService.register(req) } returns res
 
-        val response = authController.register(request)
+        val response = authController.register(req)
 
         assertEquals(HttpStatus.OK, response.statusCode)
-        assertEquals(expectedResponse, response.body)
+        assertEquals(res, response.body)
     }
-
+    
     @Test
-    fun `login should return ok when credentials are correct`() {
-        val request = LoginRequest("test@example.com", "password")
-        val userInfo = com.example.equispedia.DTO.UserInfoResponse("test@example.com", "Test User", 1)
-        val expectedResponse = AuthResponse("token123", userInfo)
-        
-        every { authService.login(request) } returns expectedResponse
+    fun `register should handle exceptions`() {
+        val req = RegisterRequest("test@test.com", "pass", "Test")
+        every { authService.register(req) } throws Exception("Error")
 
-        val response = authController.login(request)
-
-        assertEquals(HttpStatus.OK, response.statusCode)
-        assertEquals(expectedResponse, response.body)
-    }
-
-    @Test
-    fun `login should return bad request when service throws exception`() {
-        val request = LoginRequest("test@example.com", "wrongpassword")
-        
-        every { authService.login(request) } throws Exception("Invalid credentials")
-
-        val response = authController.login(request)
+        val response = authController.register(req)
 
         assertEquals(HttpStatus.BAD_REQUEST, response.statusCode)
-        val body = response.body as Map<*, *>
-        assertEquals("Invalid credentials", body["error"])
+    }
+
+    @Test
+    fun `login should return ok`() {
+        val req = LoginRequest("test@test.com", "pass")
+        val res = AuthResponse("token", UserInfoResponse("test@test.com", "Test", 1))
+        every { authService.login(req) } returns res
+
+        val response = authController.login(req)
+
+        assertEquals(HttpStatus.OK, response.statusCode)
+        assertEquals(res, response.body)
+    }
+
+    @Test
+    fun `me should return ok`() {
+        SecurityContextHolder.getContext().authentication = 
+            UsernamePasswordAuthenticationToken("test@test.com", null)
+            
+        val res = UserInfoResponse("test@test.com", "Test", 1)
+        every { authService.getMe("test@test.com") } returns res
+
+        val response = authController.me()
+
+        assertEquals(HttpStatus.OK, response.statusCode)
+        assertEquals(res, response.body)
+    }
+    
+    @Test
+    fun `googleLogin should return ok`() {
+        val req = GoogleLoginRequest("token")
+        val res = AuthResponse("token", UserInfoResponse("test@test.com", "Test", 1))
+        every { authService.loginWithGoogle(req) } returns res
+        
+        val response = authController.googleLogin(req)
+        
+        assertEquals(HttpStatus.OK, response.statusCode)
+        assertEquals(res, response.body)
     }
 }

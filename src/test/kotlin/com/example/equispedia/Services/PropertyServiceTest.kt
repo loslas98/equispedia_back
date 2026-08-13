@@ -69,4 +69,51 @@ class PropertyServiceTest {
         assertEquals("Test Hotel", response?.name)
         assertEquals(4, response?.starRating)
     }
+
+    @Test
+    fun `createProperty should save and return property response`() {
+        // Arrange
+        val req = com.example.equispedia.DTO.PropertyRequest(
+            name = "New Hotel", propertyTypeId = 1, regionId = 1,
+            address = "Address", latitude = java.math.BigDecimal.ZERO,
+            longitude = java.math.BigDecimal.ZERO, tagIds = listOf(),
+            amenityIds = listOf(), paymentMethodIds = listOf()
+        )
+        val type = com.example.equispedia.Models.PropertyType(id = 1, name = "Hotel")
+        val region = com.example.equispedia.Models.Region(id = 1, name = "City", type = com.example.equispedia.Models.RegionType.CITY)
+        
+        every { propertyTypeRepository.findById(1) } returns Optional.of(type)
+        every { regionRepository.findById(1) } returns Optional.of(region)
+        every { tagRepository.findAllById(any<List<Int>>()) } returns listOf()
+        every { amenityRepository.findAllById(any<List<Int>>()) } returns listOf()
+        every { paymentMethodRepository.findAllById(any<List<Int>>()) } returns listOf()
+        
+        val savedProp = Property(id = 1, name = "New Hotel", address = "Address", propertyType = type, region = region, latitude = java.math.BigDecimal.ZERO, longitude = java.math.BigDecimal.ZERO)
+        every { propertyRepository.save(any()) } returns savedProp
+
+        // Act
+        val response = propertyService.createProperty(req)
+
+        // Assert
+        assertEquals(1, response.id)
+        assertEquals("New Hotel", response.name)
+    }
+
+    @Test
+    fun `checkAvailability should return true if any room is available`() {
+        val checkIn = java.time.LocalDate.now()
+        val checkOut = checkIn.plusDays(1)
+        val roomType = com.example.equispedia.Models.RoomType(id = 1, property = mockk(relaxed = true), name = "Standard", maxOccupancyAdults = 2, maxOccupancyChildren = 1, basePricePerNight = java.math.BigDecimal("100.0"))
+        
+        every { roomInventoryRepository.findByPropertyIdAndDateBetween(1, checkIn, checkOut) } returns listOf(
+            com.example.equispedia.Models.RoomInventory(id = 1, roomType = roomType, date = checkIn, roomsAvailable = 1)
+        )
+        every { roomTypeRepository.findByPropertyId(1) } returns listOf(roomType)
+
+        val response = propertyService.checkAvailability(1, checkIn, checkOut, 2)
+
+        assertEquals(true, response.isAvailable)
+        assertEquals(1, response.rooms.size)
+        assertEquals(true, response.rooms[0].isAvailable)
+    }
 }

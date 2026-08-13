@@ -1,7 +1,9 @@
 package com.example.equispedia.Controllers
 
+import com.example.equispedia.DTO.PropertySummaryResponse
 import com.example.equispedia.DTO.UserCreateRequest
 import com.example.equispedia.DTO.UserResponse
+import com.example.equispedia.Services.BookingService
 import com.example.equispedia.Services.UserService
 import io.mockk.every
 import io.mockk.mockk
@@ -13,7 +15,8 @@ import java.security.Principal
 class UserControllerTest {
 
     private val userService: UserService = mockk()
-    private val userController = UserController(userService)
+    private val bookingService: BookingService = mockk()
+    private val userController = UserController(userService, bookingService)
 
     @Test
     fun `createUser should return user response`() {
@@ -45,5 +48,39 @@ class UserControllerTest {
         val response = userController.getUser(1)
 
         assertEquals(HttpStatus.NOT_FOUND, response.statusCode)
+    }
+
+    @Test
+    fun `toggleFavorite should return ok`() {
+        every { userService.toggleFavorite(1, 2) } returns true
+
+        val response = userController.toggleFavorite(1, 2)
+
+        assertEquals(HttpStatus.OK, response.statusCode)
+        assertEquals(true, response.body?.get("isFavorite"))
+    }
+
+    @Test
+    fun `getMyFavorites should return favorites`() {
+        val res = listOf(PropertySummaryResponse(id = 1, name = "Hotel", propertyType = "Hotel", region = "City", starRating = 5, basePricePerNight = 100.0, mainImageUrl = null))
+        every { userService.getMyFavorites("test@example.com") } returns res
+
+        val principal = Principal { "test@example.com" }
+        val response = userController.getMyFavorites(principal)
+
+        assertEquals(HttpStatus.OK, response.statusCode)
+        assertEquals(res, response.body)
+    }
+
+    @Test
+    fun `getMyBookings should return bookings`() {
+        val res = listOf(mockk<com.example.equispedia.DTO.BookingResponse>(relaxed = true))
+        every { bookingService.getMyBookings("test@example.com") } returns res
+
+        val principal = Principal { "test@example.com" }
+        val response = userController.getMyBookings(principal)
+
+        assertEquals(HttpStatus.OK, response.statusCode)
+        assertEquals(res, response.body)
     }
 }
