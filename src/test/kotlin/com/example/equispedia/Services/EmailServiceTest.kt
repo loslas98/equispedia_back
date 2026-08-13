@@ -15,7 +15,7 @@ import java.time.LocalDate
 class EmailServiceTest {
 
     private val mailSender: JavaMailSender = mockk()
-    private val emailService = EmailService(mailSender)
+    private val emailService = EmailService(mailSender, "test@example.com")
 
     @Test
     fun `sendSimpleEmail should send email successfully`() {
