@@ -33,6 +33,8 @@ data class BookingResponse(
     val id: Int,
     val userId: Int,
     val propertyId: Int,
+    val propertyName: String,
+    val propertyImageUrl: String?,
     val checkIn: LocalDate,
     val checkOut: LocalDate,
     val totalPrice: BigDecimal,

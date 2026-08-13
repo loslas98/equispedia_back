@@ -20,6 +20,8 @@ class BookingService(
             id = booking.id,
             userId = booking.user.id,
             propertyId = booking.property.id,
+            propertyName = booking.property.name,
+            propertyImageUrl = booking.property.images.firstOrNull { it.isMain }?.url ?: booking.property.images.firstOrNull()?.url,
             checkIn = booking.checkIn,
             checkOut = booking.checkOut,
             totalPrice = booking.totalPrice,
@@ -29,11 +31,31 @@ class BookingService(
         )
     }
 
+    @Transactional(readOnly = true)
+    fun getMyBookings(email: String): List<BookingResponse> {
+        val user = userRepository.findByEmail(email) ?: throw RuntimeException("User not found")
+        val bookings = bookingRepository.findByUserId(user.id)
+        
+        return bookings.map { booking ->
+            val items = bookingItemRepository.findByBookingId(booking.id)
+            toResponse(booking).copy(
+                items = items.map { BookingItemResponse(it.id, it.roomType.id, it.guestsCount) }
+            )
+        }
+    }
+
     @Transactional
     fun createBooking(req: BookingRequest): BookingResponse {
-        val user = userRepository.findById(req.userId).orElseGet {
-            userRepository.findAll().firstOrNull() ?: throw RuntimeException("No users found in database")
+        var user: User? = null
+        if (!req.guestEmail.isNullOrBlank()) {
+            user = userRepository.findByEmail(req.guestEmail)
         }
+        if (user == null) {
+            user = userRepository.findById(req.userId).orElseGet {
+                userRepository.findAll().firstOrNull() ?: throw RuntimeException("No users found in database")
+            }
+        }
+        
         val prop = propertyRepository.findById(req.propertyId).orElseGet {
             propertyRepository.findAll().firstOrNull() ?: throw RuntimeException("No properties found in database")
         }

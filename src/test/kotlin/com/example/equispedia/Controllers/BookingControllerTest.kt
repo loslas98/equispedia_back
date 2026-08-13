@@ -31,6 +31,8 @@ class BookingControllerTest {
             id = 1,
             userId = 1,
             propertyId = 1,
+            propertyName = "Mock Property",
+            propertyImageUrl = "mock_image_url.jpg",
             checkIn = request.checkIn,
             checkOut = request.checkOut,
             totalPrice = request.totalPrice,
